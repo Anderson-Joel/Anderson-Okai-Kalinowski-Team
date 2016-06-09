@@ -12,6 +12,7 @@ public class StartProgramView {
     
     private String promptMessage;
     private boolean menu;
+    private String PlayersName;
     
     public StartProgramView() {
         this.promptMessage = "\nPlease enter your name: ";
@@ -48,6 +49,12 @@ public class StartProgramView {
         + "\n**************************************************************"
         + "\n**************************************************************" 
         );
+    }
+    public void displayWelcomeMessage (String PlayerName) {
+        System.out.println("==========================");
+        System.out.println("Welcome" + PlayersName + ".");
+        System.out.println("Enjoy the game");
+        System.out.println("==========================");
     }
 
     public void displayStartProgramView() {
@@ -124,4 +131,52 @@ public class StartProgramView {
     }
     
     
+    
+    
+    
+     public void displayMainMenuView(){
+        
+        boolean done = false; //set flag to not done
+        do{
+            // prompt for anf get players name
+            String menuOption = this.getMenuOption();
+            if (menuOption.toUpperCase().equals("Q")) // user wants to quit
+                return; //exit the game
+            
+            //do the requested action and dispaly the next view
+            done= this.doAction(menuOption);
+        } while (!done);
+        
+            
+        }
+
+    private String getMenuOption() {
+        System.out.println("\n*** getMenuOption() function called ***");
+        return "N";
+    }
+
+    
+    
+    public String getInput(){
+        
+        Scanner keyboard = new Scanner(System.in);
+        boolean valid =false;
+        String selection = null;
+        //while a valid name has not been retrieved
+        while (!valid) {
+            
+            //gegt the value entered from the keyboard
+            selection = keyboard.nextLine();
+            selection = selection.trim();
+            
+            if (selection.length() <1) { // blank value entered
+                System.out.println("\n*** Invalid selection *** Try again");
+                continue;
+                
+            }
+           break; 
+        }
+        
+        return selection; //return the name
+    }
 }

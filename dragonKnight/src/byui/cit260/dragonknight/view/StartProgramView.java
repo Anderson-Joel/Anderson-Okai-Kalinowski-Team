@@ -165,7 +165,7 @@ public class StartProgramView {
         //while a valid name has not been retrieved
         while (!valid) {
             
-            //gegt the value entered from the keyboard
+            //get the value entered from the keyboard
             selection = keyboard.nextLine();
             selection = selection.trim();
             

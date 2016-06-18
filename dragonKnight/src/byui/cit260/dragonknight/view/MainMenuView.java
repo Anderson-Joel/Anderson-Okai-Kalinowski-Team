@@ -27,11 +27,12 @@ public class MainMenuView extends View{
 		  + "\n-----------------------------------------------");
     }
 
-    public boolean doAction(String choice) {
+    @Override
+    public boolean doAction(String value) {
 
-	choice = choice.toUpperCase(); // convert choice to upper case
+	value = value.toUpperCase(); // convert choice to upper case
 
-	switch (choice) {
+	switch (value) {
 		case "N": // create and start a new game 
 			this.startNewGame();
 			break;
@@ -72,12 +73,12 @@ String filePath = this.getInput();
             
         }
         GameMenuView gameMenu = new GameMenuView();
-gameMenu.display();
+        gameMenu.display();
     }
 
     private void displayHelpMenu() {
         HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayHelpMenuView();
+        helpMenu.display();
     }
 
     private void saveGame() {

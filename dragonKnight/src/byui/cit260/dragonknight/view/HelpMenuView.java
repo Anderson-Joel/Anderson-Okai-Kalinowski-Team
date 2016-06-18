@@ -6,11 +6,10 @@ import java.util.Scanner;
  *
  * @author DragonmanJoel
  */
-public class HelpMenuView {
-    private String menu;
+public class HelpMenuView extends View {
     
     public HelpMenuView() {
-	this.menu = "\n"
+	super("\n"
 		  + "\n-----------------------------------------------"
 		  + "\n| Help Menu                                    "
 		  + "\n-----------------------------------------------"
@@ -20,57 +19,15 @@ public class HelpMenuView {
 		  + "\nH - Harvest resources"
                   + "\nD - Delivering resources to warehouse"
 		  + "\nQ - Return to Main Menu"
-		  + "\n-----------------------------------------------";
+		  + "\n-----------------------------------------------");
     }
     
-    
-    
-    public void displayHelpMenuView() {
+    @Override
+    public boolean doAction(String value) {
 
-	boolean done = false; // set flag to not done
-	do {
-		// prompt for and get players name
-		String menuOption = this.getMenuOption();
-		if (menuOption.toUpperCase().equals("Q")) // user wants to quit
-			return; // exit the game
+	value = value.toUpperCase(); // convert choice to upper case
 
-
-		// do the requested action and display the next view
-		done = this.doAction(menuOption);
-
-	} while (!done);
-
-}
-
-    private String getMenuOption() {
-	Scanner keyboard = new Scanner(System.in); // get infile for keyboard
-	String value = ""; // value to be returned
-	boolean valid = false; // initialize to no valid
-
-	while (!valid) {  //loop while an invalid value is enter 
-		System.out.println(this.menu);
-
-		value = keyboard.nextLine(); // get next line typed on keyboard
-		value = value.trim(); // trim off leading and trailiing blanks
-
-		if (value.length() <1 ) { // blanks
-			System.out.println("\nInvalid value: value can not be blank");
-			continue;
-
-		}
-
-		break; // end the loop
-
-	}
-
-	return value;  // return the value entered
-}
-
-    public boolean doAction(String choice) {
-
-	choice = choice.toUpperCase(); // convert choice to upper case
-
-	switch (choice) {
+	switch (value) {
 		case "G": // What is the goal of the game
 			goalGame();
 			break;

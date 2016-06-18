@@ -25,10 +25,11 @@ public class MapView extends View{
         
    }
     
-    public boolean doAction(String choice) {
-        choice = choice.toUpperCase(); //convert to uppercase
+    @Override
+    public boolean doAction(String value) {
+        value = value.toUpperCase(); //convert to uppercase
         
-        switch (choice) {
+        switch (value) {
             case "A":
                  System.out.println("\n*** LEVEL ONE OF THE DUNGEON ***"); 
                  this.levelOne();

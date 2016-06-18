@@ -27,11 +27,12 @@ class GameMenuView extends View{
     }
     
     
-    public boolean doAction(String choice) {
+    @Override
+    public boolean doAction(String value) {
 
-	choice = choice.toUpperCase(); // convert choice to upper case
+	value = value.toUpperCase(); // convert choice to upper case
 
-	switch (choice) {
+	switch (value) {
 		case "G": // What is the goal of the game
 			Weapon();
 			break;

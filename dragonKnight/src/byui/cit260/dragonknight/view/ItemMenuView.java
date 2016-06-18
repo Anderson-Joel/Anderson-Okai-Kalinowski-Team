@@ -30,10 +30,10 @@ public class ItemMenuView extends View {
    }
     
     @Override
-    public boolean doAction(String choice) {
-        choice = choice.toUpperCase(); //convert to uppercase
+    public boolean doAction(String value) {
+        value = value.toUpperCase(); //convert to uppercase
         
-        switch (choice) {
+        switch (value) {
             case "P": //potion
                 this.usePotion();
                 return true;

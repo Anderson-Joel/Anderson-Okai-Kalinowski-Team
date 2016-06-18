@@ -8,6 +8,10 @@ import java.util.Objects;
  * @author DragonmanJoel
  */
 public class Game implements Serializable {
+
+    public static void getsaveGame(String filePath) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     private String menu;
     private String spell;

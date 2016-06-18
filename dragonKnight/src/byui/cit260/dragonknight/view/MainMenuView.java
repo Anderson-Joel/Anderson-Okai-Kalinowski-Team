@@ -1,6 +1,7 @@
 package byui.cit260.dragonknight.view;
 
 import byui.cit260.dragonknight.control.GameControl;
+import byui.cit260.dragonknight.model.Game;
 import dragonknight.DragonKnight;
 import java.util.Scanner;
 
@@ -8,12 +9,13 @@ import java.util.Scanner;
  *
  * @author DragonmanJoel
  */
-public class MainMenuView {
+
+public class MainMenuView extends View{
     
-    private String menu;
+    
     
     public MainMenuView() {
-	this.menu = "\n"
+	super("\n"
 		  + "\n-----------------------------------------------"
 		  + "\n| Main Menu                                    "
 		  + "\n-----------------------------------------------"
@@ -22,51 +24,8 @@ public class MainMenuView {
 		  + "\nH - Get help on how to play the game"
 		  + "\nS - Save Game"
 		  + "\nQ - Quit"
-		  + "\n-----------------------------------------------";
+		  + "\n-----------------------------------------------");
     }
-    
-    
-    
-    public void displayMainMenuView() {
-
-	boolean done = false; // set flag to not done
-	do {
-		// prompt for and get players name
-		String menuOption = this.getMenuOption();
-		if (menuOption.toUpperCase().equals("Q")) // user wants to quit
-			return; // exit the game
-
-
-		// do the requested action and display the next view
-		done = this.doAction(menuOption);
-
-	} while (!done);
-
-}
-
-    private String getMenuOption() {
-	Scanner keyboard = new Scanner(System.in); // get infile for keyboard
-	String value = ""; // value to be returned
-	boolean valid = false; // initialize to no valid
-
-	while (!valid) {  //loop while an invalid value is enter 
-		System.out.println(this.menu);
-
-		value = keyboard.nextLine(); // get next line typed on keyboard
-		value = value.trim(); // trim off leading and trailiing blanks
-
-		if (value.length() <1 ) { // blanks
-			System.out.println("\nInvalid value: value can not be blank");
-			continue;
-
-		}
-
-		break; // end the loop
-
-	}
-
-	return value;  // return the value entered
-}
 
     public boolean doAction(String choice) {
 
@@ -85,6 +44,8 @@ public class MainMenuView {
 		case "S": // save the current game
 			this.saveGame();
 			break;
+                  case  "Q"    :
+                    return true;       
 		default:
 			System.out.println("\n*** Invalid Selectino *** Try Again");
 			break;
@@ -103,7 +64,15 @@ public class MainMenuView {
 }
 
     private void startExistingGame() {
-        System.out.println("*** startExsistingGame function called - NOT IMPLEMENTED YET ***");
+       System.out.println("\n\nEnter the file path for file where the game " + "was saved last.");
+String filePath = this.getInput();
+  try {
+            Game.getsaveGame(filePath);
+        } catch (Exception ex){
+            
+        }
+        GameMenuView gameMenu = new GameMenuView();
+gameMenu.display();
     }
 
     private void displayHelpMenu() {
@@ -112,8 +81,21 @@ public class MainMenuView {
     }
 
     private void saveGame() {
-        System.out.println("*** startSaveGame function called - NOT IMPLEMENTED YET ***");
+        System.out.println("\n\nEnter the file path for file where the game " + "is to be saved.");
+        String filePath = this.getInput();
+        
+        try {
+            GameControl.saveGame(DragonKnight.getCurrentGame(), filePath);
+        } catch (Exception ex){
+            
+}
     }
 
-    
+    void displayMainMenuView() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
+
+   
+    
+

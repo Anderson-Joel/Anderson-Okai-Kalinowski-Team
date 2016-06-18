@@ -11,12 +11,10 @@ import java.util.Scanner;
  *
  * @author gee
  */
-class GameMenuView {
+class GameMenuView extends View{
 
-    private String menu;
-    
     public GameMenuView() {
-	this.menu = "\n"
+	super("\n"
 		  + "\n-----------------------------------------------"
 		  + "\n| Game Menu                                    "
 		  + "\n-----------------------------------------------"
@@ -25,52 +23,10 @@ class GameMenuView {
 		  + "\nE - Buy Item"
 		  + "\nH - Help Menu"
 		  + "\nQ - Return to Main Menu"
-		  + "\n-----------------------------------------------";
+		  + "\n-----------------------------------------------");
     }
     
     
-    
-    public void displayGameMenuView() {
-
-	boolean done = false; // set flag to not done
-	do {
-		// prompt for and get players name
-		String menuOption = this.getMenuOption();
-		if (menuOption.toUpperCase().equals("Q")) // user wants to quit
-			return; // exit the game
-
-
-		// do the requested action and display the next view
-		done = this.doAction(menuOption);
-
-	} while (!done);
-
-}
-
-    private String getMenuOption() {
-	Scanner keyboard = new Scanner(System.in); // get infile for keyboard
-	String value = ""; // value to be returned
-	boolean valid = false; // initialize to no valid
-
-	while (!valid) {  //loop while an invalid value is enter 
-		System.out.println(this.menu);
-
-		value = keyboard.nextLine(); // get next line typed on keyboard
-		value = value.trim(); // trim off leading and trailiing blanks
-
-		if (value.length() <1 ) { // blanks
-			System.out.println("\nInvalid value: value can not be blank");
-			continue;
-
-		}
-
-		break; // end the loop
-
-	}
-
-	return value;  // return the value entered
-}
-
     public boolean doAction(String choice) {
 
 	choice = choice.toUpperCase(); // convert choice to upper case
@@ -91,6 +47,8 @@ class GameMenuView {
                 case "D": // Delivering resources to warehouse
 			returntoMainMenu();
 			break;
+                case  "Q"    :
+                    return true;
 		default:
 			System.out.println("\n*** Invalid Selectino *** Try Again");
 			break;
@@ -122,8 +80,6 @@ class GameMenuView {
     void displayMenu() {
         System.out.println("*** return to Menu ***");
     }
-
-   
     
 }
 

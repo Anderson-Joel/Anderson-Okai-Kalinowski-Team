@@ -33,12 +33,6 @@ public enum NPC implements Serializable {
         return description;
     }
 
-
-    
-
-
-
-
     @Override
     public String toString() {
         return "NPC{" + "location=" + location + ", description=" + description + '}';

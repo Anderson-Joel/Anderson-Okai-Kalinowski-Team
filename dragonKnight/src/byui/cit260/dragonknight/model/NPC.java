@@ -1,64 +1,43 @@
 package byui.cit260.dragonknight.model;
 
+import java.awt.Point;
 import java.io.Serializable;
 import java.util.Objects;
 /**
  *
  * @author gee
  */
-public class NPC implements Serializable {
+public enum NPC implements Serializable {
+
+    Hadrian("He is storekeeper"),
+    Tybalt("He is a storekeeper"),
+    Tyrionn("He is a storekeeper, first of his name"),
+    Adelaide("He is a storekeeper"),
+    Fendrel("He is a storekeeper");
     
-    private String location;
-    private String description;
+    private final Point location;
+    private final String description;
     
-    public NPC () {
-        
+
+
+    NPC(String description) {
+        this.description = description;
+        location = new Point(1,1);
     }
 
-    public String getLocation() {
+    public Point getLocation() {
         return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 29 * hash + Objects.hashCode(this.location);
-        hash = 29 * hash + Objects.hashCode(this.description);
-        return hash;
-    }
+    
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final NPC other = (NPC) obj;
-        if (!Objects.equals(this.location, other.location)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        return true;
-    }
+
+
 
     @Override
     public String toString() {
@@ -66,3 +45,4 @@ public class NPC implements Serializable {
     }
             
 }
+

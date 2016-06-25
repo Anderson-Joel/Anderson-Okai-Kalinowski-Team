@@ -5,7 +5,6 @@ import byui.cit260.dragonknight.model.CharacterSelection;
 import byui.cit260.dragonknight.model.Monster;
 import byui.cit260.dragonknight.model.Game;
 import byui.cit260.dragonknight.model.Inventory;
-import byui.cit260.dragonknight.model.Hero;
 import java.util.Random;
 
 /**

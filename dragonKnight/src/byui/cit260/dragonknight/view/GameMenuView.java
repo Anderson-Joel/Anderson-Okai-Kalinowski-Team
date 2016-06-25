@@ -45,6 +45,7 @@ class GameMenuView extends View{
 		case "H": // Harvest resources
 			HelpMenu();
 			break;
+                
                 case "D": // Delivering resources to warehouse
 			returntoMainMenu();
 			break;

@@ -1,6 +1,8 @@
 package byui.cit260.dragonknight.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -15,10 +17,22 @@ public class Player implements Serializable {
     private String classSelection;
     private String attributes;
     private String race;
+    List<Item> inventory;
+    List<Hero> team;
+    Location location;
 
     public Player() {
+        inventory = new ArrayList<>();
+        team = new ArrayList<>();
     }
     
+    public void addItem(Item i) {
+        inventory.add(i);
+    }
+    
+    public void addHero (Hero h) {
+        team.add(h);
+    }
     
 
     public String getName() {

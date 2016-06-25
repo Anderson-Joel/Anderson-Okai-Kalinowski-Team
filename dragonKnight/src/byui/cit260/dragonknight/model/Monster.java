@@ -90,6 +90,10 @@ public class Monster implements Serializable {
     public String toString() {
         return "Monster{" + "name=" + name + ", description=" + description + ", hitPoint=" + hitPoint + ", itemDrop=" + itemDrop + '}';
     }
+
+    public String getMonsterName() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

@@ -12,11 +12,22 @@ public class Game implements Serializable {
     public static void getsaveGame(String filePath) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public static String getPlayer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
     
     private String menu;
     private String spell;
     private double playerLevel;
     private double hitPoints;
+    private double totalTime;
+    private long noPeople;
+   
+ 
+    
 
     public Game() {
     }
@@ -98,6 +109,14 @@ public class Game implements Serializable {
     }
 
     public void SetPlayer(Player player) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setPlayer(Player player) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setMap(Map gameMap) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -48,8 +48,6 @@ class GameMenuView extends View{
                 case "D": // Delivering resources to warehouse
 			returntoMainMenu();
 			break;
-                case  "Q"    :
-                    return true;
 		default:
 			System.out.println("\n*** Invalid Selectino *** Try Again");
 			break;

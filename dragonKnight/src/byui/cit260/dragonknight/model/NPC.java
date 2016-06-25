@@ -18,6 +18,11 @@ public enum NPC implements Serializable {
     private final Point location;
     private final String description;
     
+    private Game[] game;
+    private Item[] item;
+    /*private Location[] location;*/
+    
+    
 
 
     NPC(String description) {
@@ -32,6 +37,24 @@ public enum NPC implements Serializable {
     public String getDescription() {
         return description;
     }
+
+    public Game[] getGame() {
+        return game;
+    }
+
+    public void setGame(Game[] game) {
+        this.game = game;
+    }
+
+    public Item[] getItem() {
+        return item;
+    }
+
+    public void setItem(Item[] item) {
+        this.item = item;
+    }
+    
+    
 
     @Override
     public String toString() {

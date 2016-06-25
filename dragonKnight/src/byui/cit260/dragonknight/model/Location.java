@@ -9,7 +9,12 @@ import java.util.Objects;
 public class Location {
     
     private String type;
-    private String location;
+    
+    private Monster monster;
+    private NPC npc;
+    private Item item;
+    private Player player;
+    private Weapon weapon;
 
     public Location() {
     }
@@ -22,19 +27,52 @@ public class Location {
         this.type = type;
     }
 
-    public String getLocation() {
-        return location;
+    public Monster getMonster() {
+        return monster;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setMonster(Monster monster) {
+        this.monster = monster;
     }
+
+    public NPC getNpc() {
+        return npc;
+    }
+
+    public void setNpc(NPC npc) {
+        this.npc = npc;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+    
+    
 
     @Override
     public int hashCode() {
         int hash = 5;
         hash = 97 * hash + Objects.hashCode(this.type);
-        hash = 97 * hash + Objects.hashCode(this.location);
         return hash;
     }
 
@@ -53,17 +91,11 @@ public class Location {
         if (!Objects.equals(this.type, other.type)) {
             return false;
         }
-        if (!Objects.equals(this.location, other.location)) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Location{" + "type=" + type + ", location=" + location + '}';
-    }
-    
-    
-    
+        return "Location{" + "type=" + type + '}';
+    }  
 }

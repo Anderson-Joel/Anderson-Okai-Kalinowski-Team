@@ -13,6 +13,10 @@ public class Item implements Serializable{
     private String name;
     private String description;
     private String cost;
+    
+    private Game game;
+    private Inventory inventory;
+    
 
     public Item() {
     }
@@ -40,6 +44,24 @@ public class Item implements Serializable{
     public void setCost(String cost) {
         this.cost = cost;
     }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+    
+    
 
     @Override
     public int hashCode() {

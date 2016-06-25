@@ -14,6 +14,11 @@ public class Weapon implements Serializable {
     private double defence;
     private double magic;
     private double magicDefence;
+    
+    private Game game;
+    private Inventory inventory;
+    private Player player;
+    
 
     public Weapon() {
     }
@@ -57,6 +62,32 @@ public class Weapon implements Serializable {
     public void setMagicDefence(double magicDefence) {
         this.magicDefence = magicDefence;
     }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+    
+    
 
     @Override
     public int hashCode() {

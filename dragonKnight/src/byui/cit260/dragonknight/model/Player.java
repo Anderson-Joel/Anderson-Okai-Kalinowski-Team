@@ -15,6 +15,9 @@ public class Player implements Serializable {
     private String classSelection;
     private String attributes;
     private String race;
+    
+    private Game[] game;
+    private Location[] location;
 
     public Player() {
     }
@@ -52,6 +55,24 @@ public class Player implements Serializable {
     public void setRace(String race) {
         this.race = race;
     }
+
+    public Game[] getGame() {
+        return game;
+    }
+
+    public void setGame(Game[] game) {
+        this.game = game;
+    }
+
+    public Location[] getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location[] location) {
+        this.location = location;
+    }
+    
+    
 
     @Override
     public int hashCode() {

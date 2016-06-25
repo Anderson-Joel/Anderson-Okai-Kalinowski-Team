@@ -11,6 +11,9 @@ import java.util.Objects;
 public class Scene implements Serializable{
     
     private String description;
+    
+    private Game game;
+    private Location[] location;
 
     public Scene() {
     }
@@ -22,6 +25,24 @@ public class Scene implements Serializable{
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public Location[] getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location[] location) {
+        this.location = location;
+    }
+    
+    
 
     @Override
     public int hashCode() {

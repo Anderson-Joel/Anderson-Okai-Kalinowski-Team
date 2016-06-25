@@ -11,6 +11,10 @@ public class Monster implements Serializable {
     private String description;
     private double hitPoint;
     private String itemDrop;
+    
+    private Game game;
+    private Location[] location;
+    
 
     public Monster() {
     }
@@ -48,6 +52,24 @@ public class Monster implements Serializable {
     public void setItemDrop(String itemDrop) {
         this.itemDrop = itemDrop;
     }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public Location[] getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location[] location) {
+        this.location = location;
+    }
+    
+    
 
     @Override
     public int hashCode() {

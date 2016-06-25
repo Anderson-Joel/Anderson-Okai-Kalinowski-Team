@@ -19,6 +19,12 @@ public class Inventory implements Serializable {
     private int itemDamage;
     private int itemHeal;
     private int itemAmount;
+    private int wallet;
+    
+    private Item[] item;
+    private Weapon[] weapon;
+    private Game game;
+    
 
     public Inventory() {
     }
@@ -79,6 +85,40 @@ public class Inventory implements Serializable {
     public void setItemAmount(int itemAmount) {
         this.itemAmount = itemAmount;
     }
+
+    public int getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(int wallet) {
+        this.wallet = wallet;
+    }
+
+    public Item[] getItem() {
+        return item;
+    }
+
+    public void setItem(Item[] item) {
+        this.item = item;
+    }
+
+    public Weapon[] getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Weapon[] weapon) {
+        this.weapon = weapon;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+    
+    
 
     @Override
     public int hashCode() {

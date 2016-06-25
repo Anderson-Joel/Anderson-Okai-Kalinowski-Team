@@ -44,9 +44,7 @@ public class MainMenuView extends View{
 			break;
 		case "S": // save the current game
 			this.saveGame();
-			break;
-                  case  "Q"    :
-                    return true;       
+			break;      
 		default:
 			System.out.println("\n*** Invalid Selectino *** Try Again");
 			break;

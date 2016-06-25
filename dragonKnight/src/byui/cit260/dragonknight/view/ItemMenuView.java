@@ -40,8 +40,6 @@ public class ItemMenuView extends View {
             case "F": //Fire Scroll
                 this.useFireScroll();
                 return true;
-            case  "Q"    :
-                    return true;
             default:
                 System.out.println("\n*** Invalid Selection *** Try again");
                 break;

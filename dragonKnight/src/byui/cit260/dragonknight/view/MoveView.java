@@ -46,8 +46,6 @@ public class MoveView extends View{
             case "W": //West
                 this.West();
                 break;
-            case  "Q"    :
-                    return true;
             default:
                 System.out.println("\n*** Invalid Selection *** Try again");
                 break;

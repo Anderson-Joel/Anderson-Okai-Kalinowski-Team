@@ -10,13 +10,18 @@ package byui.cit260.dragonknight.enums;
  * @author gee
  */
 public enum SceneType {
-    start,
+    
+    
+    strat,
     angel,
     lumber,
-    iron,
-    highMountain,
-    instruction,
-    finish, 
-    camp
+    camp,
+    finish,
+    shop,
+    town,
+    cave,
+    forest,
+    water,
+    castle;
     
 }

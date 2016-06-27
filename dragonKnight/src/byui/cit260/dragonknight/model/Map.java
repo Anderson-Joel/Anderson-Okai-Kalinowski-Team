@@ -1,6 +1,7 @@
 package byui.cit260.dragonknight.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -8,26 +9,47 @@ import java.io.Serializable;
  */
 public class Map implements Serializable {
     
-    private int noOfColumns;
-    private int noOfRows;
+    public static int noOfColumns = 25;
+    public static int noOfRows = 25;
     
-    private Location location;
-    private Game game;
+    private Location[][] locations;
     
 
     public Map() {
     }
 
-    public Map(int i, int i0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Map(int noOfRows, int noOfColumns) {
+        
+        if( noOfRows < 1 || noOfColumns < 1) {
+            System.out.println("The number of rows and columns must be > zero");
+        }
+        
+    this.noOfRows = noOfRows;
+    this.noOfColumns = noOfColumns;
+    
+    // creates 2-D array for Location objects
+    this.locations = new Location[noOfRows][noOfColumns];
+    
+    for (int row = 0; row < noOfRows; row++){
+            for( int column = 0; column < noOfColumns; column++){
+//                create and initialize new Location object instance
+                Location location = new Location();
+                location.setColumn(column);
+                location.setRow(row);
+
+//                assign the Location objects to the current position in array
+                locations[row][column] = location;
     }
+    }
+    
+    }   
 
     public int getNoOfColumns() {
         return noOfColumns;
     }
 
     public void setNoOfColumns(int noOfColumns) {
-        this.noOfColumns = noOfColumns;
+        Map.noOfColumns = noOfColumns;
     }
 
     public int getNoOfRows() {
@@ -35,23 +57,15 @@ public class Map implements Serializable {
     }
 
     public void setNoOfRows(int noOfRows) {
-        this.noOfRows = noOfRows;
+        Map.noOfRows = noOfRows;
     }
 
-    public Location getLocation() {
-        return location;
+    public Location[][] getLocations() {
+        return locations;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public Game getGame() {
-        return game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
+    public void setLocations(Location[][] locations) {
+        this.locations = locations;
     }
     
     
@@ -59,8 +73,8 @@ public class Map implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 71 * hash + this.noOfColumns;
-        hash = 71 * hash + this.noOfRows;
+        hash = 71 * hash + Map.noOfColumns;
+        hash = 71 * hash + Map.noOfRows;
         return hash;
     }
 
@@ -79,7 +93,7 @@ public class Map implements Serializable {
         if (this.noOfColumns != other.noOfColumns) {
             return false;
         }
-        if (this.noOfRows != other.noOfRows) {
+        if (Map.noOfRows != other.noOfRows) {
             return false;
         }
         return true;
@@ -87,8 +101,10 @@ public class Map implements Serializable {
 
     @Override
     public String toString() {
-        return "Map2{" + "noOfColumns=" + noOfColumns + ", noOfRows=" + noOfRows + '}';
+        return "Map{" + "noOfColumns=" + noOfColumns + ", noOfRows=" + noOfRows + '}';
     }
+
+    
     
     
     

@@ -7,20 +7,32 @@ import java.util.Objects;
  *
  * @author DragonmanJoel
  */
-public class Item implements Serializable{
+public enum Item implements Serializable{
+    
+    potion(),
+    superPotion(),
+    megaPotion(),
+    xPotion(),
+    blackStone(),
+    whiteStone();
+    
+    
     
     // class instance variables
     private String name;
     private String description;
-    private String cost;
+    private int cost;
+    private String itemType;
+    private int itemDamage;
+    private int itemHeal;
     
     private Game game;
     private Inventory inventory;
     
 
-    public Item() {
+    Item() {
     }
-    
+
     public String getName() {
         return name;
     }
@@ -37,12 +49,36 @@ public class Item implements Serializable{
         this.description = description;
     }
 
-    public String getCost() {
+    public int getCost() {
         return cost;
     }
 
-    public void setCost(String cost) {
+    public void setCost(int cost) {
         this.cost = cost;
+    }
+
+    public String getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
+    }
+
+    public int getItemDamage() {
+        return itemDamage;
+    }
+
+    public void setItemDamage(int itemDamage) {
+        this.itemDamage = itemDamage;
+    }
+
+    public int getItemHeal() {
+        return itemHeal;
+    }
+
+    public void setItemHeal(int itemHeal) {
+        this.itemHeal = itemHeal;
     }
 
     public Game getGame() {
@@ -60,47 +96,13 @@ public class Item implements Serializable{
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
     }
-    
-    
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 37 * hash + Objects.hashCode(this.name);
-        hash = 37 * hash + Objects.hashCode(this.description);
-        hash = 37 * hash + Objects.hashCode(this.cost);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Item other = (Item) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.cost, other.cost)) {
-            return false;
-        }
-        return true;
-    }
+    
 
     @Override
     public String toString() {
-        return "Item{" + "name=" + name + ", description=" + description + ", cost=" + cost + '}';
+        return "Item{" + "name=" + name + ", description=" + description + ", cost=" + cost + ", itemType=" + itemType + ", itemDamage=" + itemDamage + ", itemHeal=" + itemHeal + '}';
     }
-    
     
     
 }

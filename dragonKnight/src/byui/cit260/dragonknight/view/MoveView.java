@@ -35,16 +35,16 @@ public class MoveView extends View{
         switch (value) {
             case "N": //North
                 
-                this.North();
+                this.north();
                 break;
             case "S": //South
-                this.South();
+                this.south();
                 break;
             case "E": //East
-                this.East();
+                this.east();
                 break;
             case "W": //West
-                this.West();
+                this.west();
                 break;
             default:
                 System.out.println("\n*** Invalid Selection *** Try again");
@@ -53,22 +53,22 @@ public class MoveView extends View{
         return false;
     }
 
-    private void North() {     
+    private void north() {     
         
         System.out.println("***You have chosen North***");
         open();
     }
-    private void South() {
+    private void south() {
         
         System.out.println("***You have chosen South***");
         open();
     }
-     private void East() {
+     private void east() {
         
         System.out.println("***You have chosen East***");
         open();
     }
-      private void West() {
+      private void west() {
         
         System.out.println("***You have chosen West***");
         open();

@@ -33,5 +33,9 @@ public class MapControl {
     private static void assignScenesToLocations(Map map, Scene[] scenes) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    static void moveNPCToStartingLocation(Map map) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

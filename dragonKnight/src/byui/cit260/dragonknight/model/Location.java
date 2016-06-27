@@ -15,6 +15,9 @@ public class Location {
     private Item item;
     private Player player;
     private Weapon weapon;
+    private Scene scene;
+    private int row;
+    private int column;
 
     public Location() {
     }
@@ -66,13 +69,37 @@ public class Location {
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }
-    
-    
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.type);
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.type);
+        hash = 59 * hash + this.row;
+        hash = 59 * hash + this.column;
         return hash;
     }
 
@@ -88,6 +115,12 @@ public class Location {
             return false;
         }
         final Location other = (Location) obj;
+        if (this.row != other.row) {
+            return false;
+        }
+        if (this.column != other.column) {
+            return false;
+        }
         if (!Objects.equals(this.type, other.type)) {
             return false;
         }
@@ -96,6 +129,8 @@ public class Location {
 
     @Override
     public String toString() {
-        return "Location{" + "type=" + type + '}';
-    }  
+        return "Location{" + "type=" + type + ", row=" + row + ", column=" + column + '}';
+    }
+
+      
 }

@@ -190,6 +190,14 @@ public class Game implements Serializable {
     public String toString() {
         return "Game{" + "menu=" + menu + ", spell=" + spell + ", playerLevel=" + playerLevel + ", hitPoints=" + hitPoints + ", expPoints=" + expPoints + '}';
     }
+
+    public void SetPlayer(Player player) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setInventory(Inventory[] inventoryList) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     

@@ -115,6 +115,10 @@ public class Player implements Serializable {
     public String toString() {
         return "Player{" + "name=" + name + ", classSelection=" + classSelection + ", attributes=" + attributes + ", race=" + race + '}';
     }
+
+    public void setLocation(Location newLocation) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 

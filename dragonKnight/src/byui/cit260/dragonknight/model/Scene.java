@@ -91,7 +91,7 @@ public class Scene implements Serializable{
      
      Scene finishScene = new Scene();
      finishScene.setDescription(
-     "Congratulation! Well done you have emerge victorious against the Dragon Lord."
+     "Congratulation! Well done you have emerge victorious against the Evil Dragon Lord."
      +"You have just launced your ship of curious workmanship and "
      +"begun your journey to home.");
      finishScene.setMapSymbol( " FN ");
@@ -109,18 +109,6 @@ public class Scene implements Serializable{
      
         
         return scenes;
-    }
-
-    public void setMapSymbol(String _st_) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void setBlocked(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void setTravelTime(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

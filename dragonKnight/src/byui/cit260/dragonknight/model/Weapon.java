@@ -7,7 +7,13 @@ import java.util.Objects;
  *
  * @author DragonmanJoel
  */
-public class Weapon implements Serializable {
+public enum Weapon implements Serializable {
+    
+    
+    shortSword(),
+    medSword(),
+    longSword(),
+    dualSwords();
     
     private String name;
     private double attack;
@@ -20,7 +26,7 @@ public class Weapon implements Serializable {
     private Player player;
     
 
-    public Weapon() {
+    Weapon() {
     }
 
     public String getName() {
@@ -89,46 +95,7 @@ public class Weapon implements Serializable {
     
     
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 37 * hash + Objects.hashCode(this.name);
-        hash = 37 * hash + (int) (Double.doubleToLongBits(this.attack) ^ (Double.doubleToLongBits(this.attack) >>> 32));
-        hash = 37 * hash + (int) (Double.doubleToLongBits(this.defence) ^ (Double.doubleToLongBits(this.defence) >>> 32));
-        hash = 37 * hash + (int) (Double.doubleToLongBits(this.magic) ^ (Double.doubleToLongBits(this.magic) >>> 32));
-        hash = 37 * hash + (int) (Double.doubleToLongBits(this.magicDefence) ^ (Double.doubleToLongBits(this.magicDefence) >>> 32));
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Weapon other = (Weapon) obj;
-        if (Double.doubleToLongBits(this.attack) != Double.doubleToLongBits(other.attack)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.defence) != Double.doubleToLongBits(other.defence)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.magic) != Double.doubleToLongBits(other.magic)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.magicDefence) != Double.doubleToLongBits(other.magicDefence)) {
-            return false;
-        }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        return true;
-    }
+    
 
     @Override
     public String toString() {

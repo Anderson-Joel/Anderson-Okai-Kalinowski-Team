@@ -14,30 +14,17 @@ import java.util.Objects;
  */
 public class Inventory implements Serializable {
     private String itemName;
-    private String itemDescription;
-    private String itemType;
-    private int itemDamage;
-    private int itemHeal;
     private int itemAmount;
-    private int wallet;
+    private int itemInStock;
+    
     
     private Item[] item;
     private Weapon[] weapon;
     private Game game;
-    
 
     public Inventory() {
     }
-    
-    public Inventory(String itemName, String itemDescription, int itemDamage, int itemHeal, int itemAmount) {
-        this.itemName = itemName;
-        this.itemDescription = itemDescription;
-        this.itemDamage = itemDamage;
-        this.itemHeal = itemHeal;
-        this.itemAmount = itemAmount;
-        
-    }
-    
+
     public String getItemName() {
         return itemName;
     }
@@ -45,37 +32,13 @@ public class Inventory implements Serializable {
     public void setItemName(String itemName) {
         this.itemName = itemName;
     }
-    
-    public String getItemDescription() {
-        return itemDescription;
+
+    public int getItemInStock() {
+        return itemInStock;
     }
 
-    public void setItemDescription(String itemDescription) {
-        this.itemDescription = itemDescription;
-    }
-
-    public String getItemType() {
-        return itemType;
-    }
-
-    public void setItemType(String itemType) {
-        this.itemType = itemType;
-    }
-
-    public int getItemDamage() {
-        return itemDamage;
-    }
-
-    public void setItemDamage(int itemDamage) {
-        this.itemDamage = itemDamage;
-    }
-
-    public int getItemHeal() {
-        return itemHeal;
-    }
-
-    public void setItemHeal(int itemHeal) {
-        this.itemHeal = itemHeal;
+    public void setItemInStock(int itemInStock) {
+        this.itemInStock = itemInStock;
     }
 
     public int getItemAmount() {
@@ -84,14 +47,6 @@ public class Inventory implements Serializable {
 
     public void setItemAmount(int itemAmount) {
         this.itemAmount = itemAmount;
-    }
-
-    public int getWallet() {
-        return wallet;
-    }
-
-    public void setWallet(int wallet) {
-        this.wallet = wallet;
     }
 
     public Item[] getItem() {
@@ -117,25 +72,16 @@ public class Inventory implements Serializable {
     public void setGame(Game game) {
         this.game = game;
     }
-    
-    
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.itemDescription);
-        hash = 97 * hash + Objects.hashCode(this.itemType);
-        hash = 97 * hash + this.itemDamage;
-        hash = 97 * hash + this.itemHeal;
+        hash = 97 * hash + Objects.hashCode(this.itemName);
+        hash = 97 * hash + this.itemInStock;
         hash = 97 * hash + this.itemAmount;
         return hash;
     }
 
-    @Override
-    public String toString() {
-        return "Items{" + "itemDescription=" + itemDescription + ", itemType=" + itemType + ", itemDamage=" + itemDamage + ", itemHeal=" + itemHeal + ", itemAmout=" + itemAmount + '}';
-    }
-    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -148,23 +94,24 @@ public class Inventory implements Serializable {
             return false;
         }
         final Inventory other = (Inventory) obj;
-        if (this.itemDamage != other.itemDamage) {
-            return false;
-        }
-        if (this.itemHeal != other.itemHeal) {
+        if (this.itemInStock != other.itemInStock) {
             return false;
         }
         if (this.itemAmount != other.itemAmount) {
             return false;
         }
-        if (!Objects.equals(this.itemDescription, other.itemDescription)) {
-            return false;
-        }
-        if (!Objects.equals(this.itemType, other.itemType)) {
+        if (!Objects.equals(this.itemName, other.itemName)) {
             return false;
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Inventory{" + "itemName=" + itemName + ", itemAmount=" + itemAmount + ", itemInStock=" + itemInStock + '}';
+    }
+
+    
     
     
     

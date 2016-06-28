@@ -23,5 +23,15 @@ public enum SceneType {
     forest,
     water,
     castle;
+
+    public static class start {
+
+        public static int ordinal() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        public start() {
+        }
+    }
     
 }

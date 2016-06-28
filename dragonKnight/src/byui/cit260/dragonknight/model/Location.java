@@ -1,15 +1,16 @@
 package byui.cit260.dragonknight.model;
 
+import byui.cit260.dragonknight.enums.LocationType;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author DragonmanJoel
  */
-public class Location {
+public class Location implements Serializable {
     
-    private String type;
-    
+    private LocationType type;
     private Monster monster;
     private NPC npc;
     private Item item;
@@ -17,16 +18,17 @@ public class Location {
     private Weapon weapon;
     private Scene scene;
     private int row;
-    private int column;
+    private int col;
+    private Hero hero;
 
     public Location() {
     }
 
-    public String getType() {
+    public LocationType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(LocationType type) {
         this.type = type;
     }
 
@@ -86,20 +88,33 @@ public class Location {
         this.row = row;
     }
 
-    public int getColumn() {
-        return column;
+    public int getCol() {
+        return col;
     }
 
-    public void setColumn(int column) {
-        this.column = column;
+    public void setCol(int col) {
+        this.col = col;
     }
+
+    public Hero getHero() {
+        return hero;
+    }
+
+    public void setHero(Hero hero) {
+        this.hero = hero;
+    }
+
+    
+
+    
+   
 
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 59 * hash + Objects.hashCode(this.type);
         hash = 59 * hash + this.row;
-        hash = 59 * hash + this.column;
+        hash = 59 * hash + this.col;
         return hash;
     }
 
@@ -118,7 +133,7 @@ public class Location {
         if (this.row != other.row) {
             return false;
         }
-        if (this.column != other.column) {
+        if (this.col != other.col) {
             return false;
         }
         if (!Objects.equals(this.type, other.type)) {
@@ -129,7 +144,11 @@ public class Location {
 
     @Override
     public String toString() {
-        return "Location{" + "type=" + type + ", row=" + row + ", column=" + column + '}';
+        return "Location{" + "type=" + type + ", row=" + row + ", column=" + col + '}';
+    }
+
+    public int getColumns() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
       

@@ -1,12 +1,16 @@
 package byui.cit260.dragonknight.control;
 
 import byui.cit260.dragonknight.model.Game;
+import byui.cit260.dragonknight.model.Hero;
 import byui.cit260.dragonknight.model.Inventory;
 import byui.cit260.dragonknight.model.Item;
+import byui.cit260.dragonknight.model.Location;
 import byui.cit260.dragonknight.model.Map;
 import byui.cit260.dragonknight.model.Player;
 import byui.cit260.dragonknight.model.Weapon;
 import dragonknight.DragonKnight;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -33,93 +37,68 @@ public class GameControl {
     public static void createNewGame(Player player) {
         
         Game game = new Game(); // Create new game
-        DragonKnight.setCurrentGame(game); //save in DragonKnight
+        DragonKnight.setGame(game); //save in DragonKnight
         
         game.SetPlayer(player); // save player in game
         
-        // create the inventory list and save in the game
-        Inventory[] inventoryList = GameControl.createInventoryList();
-        game.setInventory(inventoryList);
+        Map gameMap = new Map();
+        game.setMap(gameMap);
         
-       
-        Map map = MapControl.createMap(); // create and initialize new map
-        game.setMap(map); // save map in game
+                populateMapWithHeroes(gameMap);
         
-        // moves npcs to starting positions on the map
-        MapControl.moveNPCToStartingLocation(map);
+        player.setLocation(gameMap.getLocation(0,0));
+        
+        DragonKnight.setGame(game);
+        
     }
+     public static void populateMapWithHeroes(Map map) {
+                 
+         List<Hero> heroes = createHeroList();
+         boolean sucess = false;
+         for (Hero h: heroes) {
+          
+             do {
+                 int row = (int)(Math.random() * Map.NUM_ROWS) ;
+             int col = (int)(Math.random() * Map.NUM_COLS) ;
+             
+            sucess = false;
+             
+             if(map.getLocation(row,col).getHero()  !=null){
+                    map.getLocation(row, col).setHero(h);
+                 sucess = true;
+                 }
+          
+             
+             } while(sucess == false);
+             
+         }
+             }
+     
+     public static List<Hero> createHeroList() {
+         
+         List<Hero> heroList = new ArrayList<>();
+         
+         Hero flash = new Hero();
+         flash.setName("flash");
+         flash.setHitpoints(10);
+         flash.setAttackpoints(2);
+         heroList.add(flash);
+         
+         Hero ironman = new Hero();
+         ironman.setName("ironman");
+         ironman.setHitpoints(5);
+         ironman.setAttackpoints(4);
+         heroList.add(ironman);
+         
+         
+         
+         return heroList;
+         
+         
+     }
 
-    public static void saveGame(Game currentGame, String filePath) {
+    public static void saveGame(Game game, String filePath) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private static Inventory[] createInventoryList() {
-        Inventory[] inventory=
-                new Inventory[10];
-        
-        Inventory potion = new Inventory();
-        potion.setItemName("Potion");
-        potion.setItemAmount(0);
-        potion.setItemInStock(0);
-        inventory[Item.potion.ordinal()] = potion;
-        
-        Inventory superPotion = new Inventory();
-        superPotion.setItemName("Super Potion");
-        superPotion.setItemAmount(0);
-        superPotion.setItemInStock(0);
-        inventory[Item.superPotion.ordinal()] = superPotion;
-        
-        Inventory megaPotion = new Inventory();
-        megaPotion.setItemName("Mega Potion");
-        megaPotion.setItemAmount(0);
-        megaPotion.setItemInStock(0);
-        inventory[Item.megaPotion.ordinal()] = megaPotion;
-        
-        Inventory xPotion = new Inventory();
-        xPotion.setItemName("X-Potion");
-        xPotion.setItemAmount(0);
-        xPotion.setItemInStock(0);
-        inventory[Item.xPotion.ordinal()] = xPotion;
-        
-        Inventory shortSword = new Inventory();
-        shortSword.setItemName("Short Sword");
-        shortSword.setItemAmount(0);
-        shortSword.setItemInStock(0);
-        inventory[Weapon.shortSword.ordinal()] = shortSword;
-        
-        Inventory medSword = new Inventory();
-        medSword.setItemName("Medium Sword");
-        medSword.setItemAmount(0);
-        medSword.setItemInStock(0);
-        inventory[Weapon.medSword.ordinal()] = medSword;
-        
-        Inventory longSword = new Inventory();
-        longSword.setItemName("Long Sword");
-        longSword.setItemAmount(0);
-        longSword.setItemInStock(0);
-        inventory[Weapon.longSword.ordinal()] = longSword;
-        
-        Inventory dualSwords = new Inventory();
-        dualSwords.setItemName("Dual Swords");
-        dualSwords.setItemAmount(0);
-        dualSwords.setItemInStock(0);
-        inventory[Weapon.dualSwords.ordinal()] = dualSwords;
-        
-        Inventory blackStone = new Inventory();
-        blackStone.setItemName("Black Stone");
-        blackStone.setItemAmount(0);
-        blackStone.setItemInStock(0);
-        inventory[Item.blackStone.ordinal()] = blackStone;
-        
-        Inventory whiteStone = new Inventory();
-        whiteStone.setItemName("whiteStone");
-        whiteStone.setItemAmount(0);
-        whiteStone.setItemInStock(0);
-        inventory[Item.whiteStone.ordinal()] = whiteStone;
-        
-        return inventory;
-        
-        
-    }
-    
 }

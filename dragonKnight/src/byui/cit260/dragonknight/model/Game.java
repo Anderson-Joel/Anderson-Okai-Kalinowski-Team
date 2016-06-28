@@ -1,5 +1,6 @@
 package byui.cit260.dragonknight.model;
 
+import dragonknight.DragonKnight;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -192,10 +193,14 @@ public class Game implements Serializable {
     }
 
     public void SetPlayer(Player player) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DragonKnight.player = player;
     }
 
     public void setInventory(Inventory[] inventoryList) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Object getplayer() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

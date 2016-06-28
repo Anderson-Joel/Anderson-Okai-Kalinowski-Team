@@ -5,6 +5,9 @@
  */
 package byui.cit260.dragonknight.view;
 
+import byui.cit260.dragonknight.control.MovementController;
+import byui.cit260.dragonknight.model.Location;
+import dragonknight.DragonKnight;
 import java.util.Scanner;
 
 /**
@@ -18,69 +21,100 @@ class GameMenuView extends View{
 		  + "\n-----------------------------------------------"
 		  + "\n| Game Menu                                    "
 		  + "\n-----------------------------------------------"
-		  + "\nW - Weapons"
-		  + "\nM - Show Map"
-		  + "\nE - Buy Item"
-		  + "\nH - Help Menu"
+		  + "\nP - Search for people"
+		  + "\nN - Move North"
+		  + "\nE - Move East"
+                  + "\nS - Move South"
+		  + "\nW - Move West"
+                  + "\nM - View Map"
+                  + "\nL - View Current Location"
 		  + "\nQ - Return to Main Menu"
 		  + "\n-----------------------------------------------");
     }
     
     
     @Override
-    public boolean doAction(String value) {
+    public boolean doAction(String selection) {
 
-	value = value.toUpperCase(); // convert choice to upper case
+	char charSel = selection.toUpperCase().charAt(0); // convert choice to upper case
 
-	switch (value) {
-		case "G": // What is the goal of the game
-			Weapon();
-			break;
-		case "M": // How to move 
-			showtheMap();
-			break;
-		case "E": // Estimate amount of resources
-			buyItem();
-			break;
-		case "H": // Harvest resources
-			HelpMenu();
-			break;
+	switch (charSel) {
+            
+            case 'P' :
+                searchPeople();
+                break;
+                case 'N' :
+                moveNorth();
+                break;
+                case 'E' :
+                moveEast();
+                break;
+                case 'S' :
+                moveSouth();
+                break;
+                case 'W' :
+                moveWest();
+                break;
+                case 'M' :
+                viewMap();
+                break;
+                case 'L' :
+                viewCurrentLocation();
+                break;
+                case 'Q' :
+                return true;
+                default:
+                    System.out.println("Invalid option");
+                    break;
                 
-                case "D": // Delivering resources to warehouse
-			returntoMainMenu();
-			break;
-		default:
-			System.out.println("\n*** Invalid Selectino *** Try Again");
-			break;
-	}
+        }
+           return false;
+        }
 
-	return false;
-}
-
-  
-    private void Weapon() {
-          System.out.println("*** Change weapon ***");
-    }
-    
-    private void buyItem() {
-          System.out.println("*** Buy an item ***");    }
-
-    private void HelpMenu() {
-        System.out.println("*** Go to Help Menu ***");
+    private void searchPeople() {
+        System.out.println ("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void returntoMainMenu() {
-          System.out.println("*** Return to Main Menu ***");
+    private void moveNorth() {
+        MovementController mc = new MovementController();
+        if (mc.moveNorth(DragonKnight.getGame()) == false){
+            System.out.println("You cannot move towards that direction");
+        };
     }
 
-    private void showtheMap() {
-       System.out.println("*** Show Map ***");
+    private void moveEast() {
+       MovementController mc = new MovementController();
+        if (mc.moveEast(DragonKnight.getGame()) == false){
+            System.out.println("You cannot move towards that direction");
+        };
+    }
+
+    private void moveSouth() {
+       MovementController mc = new MovementController();
+        if (mc.moveSouth(DragonKnight.getGame()) == false){
+            System.out.println("You cannot move towards that direction");
+        };
+    }
+
+    private void moveWest() {
+      MovementController mc = new MovementController();
+        if (mc.moveWest(DragonKnight.getGame()) == false){
+            System.out.println("You cannot move towards that direction");
+        };
+    }
+
+    private void viewMap() {
+        System.out.println(DragonKnight.getGame().getMap().getMapString());
     }
 
     void displayMenu() {
-        System.out.println("*** return to Menu ***");
+         System.out.println("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+   private void viewCurrentLocation() {
+       Location l = DragonKnight.getGame().getPlayer().getLocation();
+       System.out.println("You are at ("+ l.getRow() + ", " + l.getCol() + ")");
+   } 
 }
-
-
+  
+   

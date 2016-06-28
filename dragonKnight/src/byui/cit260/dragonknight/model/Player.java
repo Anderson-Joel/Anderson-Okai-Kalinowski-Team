@@ -1,6 +1,8 @@
 package byui.cit260.dragonknight.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -12,14 +14,18 @@ public class Player implements Serializable {
     
     // class instance variables
     private String name;
+    List<Item> inventory;
+     List<Hero> team;
     private String classSelection;
     private String attributes;
     private String race;
     
     private Game[] game;
-    private Location[] location;
+    private Location location;
 
     public Player() {
+        inventory = new ArrayList<>();
+        team = new ArrayList<>();
     }
     
     
@@ -64,11 +70,11 @@ public class Player implements Serializable {
         this.game = game;
     }
 
-    public Location[] getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public void setLocation(Location[] location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
     
@@ -114,10 +120,6 @@ public class Player implements Serializable {
     @Override
     public String toString() {
         return "Player{" + "name=" + name + ", classSelection=" + classSelection + ", attributes=" + attributes + ", race=" + race + '}';
-    }
-
-    public void setLocation(Location newLocation) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

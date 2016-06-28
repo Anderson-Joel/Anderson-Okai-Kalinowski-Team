@@ -84,7 +84,7 @@ String filePath = this.getInput();
         String filePath = this.getInput();
         
         try {
-            GameControl.saveGame(DragonKnight.getCurrentGame(), filePath);
+            GameControl.saveGame(DragonKnight.getGame(), filePath);
         } catch (Exception ex){
             
 }

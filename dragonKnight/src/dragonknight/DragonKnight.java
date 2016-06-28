@@ -10,8 +10,8 @@ import byui.cit260.dragonknight.view.StartProgramView;
  */
 public class DragonKnight {
     
-    private static Game currentGame = null;
-    private static Player player = null;
+    private static Game game;
+    public static Player player;
     
     
     public static void main(String[] args) {
@@ -21,12 +21,12 @@ public class DragonKnight {
         
     }
 
-    public static Game getCurrentGame() {
-        return currentGame;
+    public static Game getGame() {
+        return game;
     }
 
-    public static void setCurrentGame(Game currentGame) {
-        DragonKnight.currentGame = currentGame;
+    public static void setGame(Game game) {
+        DragonKnight.game = game;
     }
 
     public static Player getPlayer() {
@@ -37,13 +37,7 @@ public class DragonKnight {
         DragonKnight.player = player;
     }
 
-    public static void setGame(Game g) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public static Object getGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
     
     
     

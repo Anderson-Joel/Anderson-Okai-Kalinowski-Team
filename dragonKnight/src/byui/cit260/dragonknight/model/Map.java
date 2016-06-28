@@ -1,111 +1,70 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package byui.cit260.dragonknight.model;
 
-import java.io.Serializable;
-import java.util.ArrayList;
+import byui.cit260.dragonknight.enums.LocationType;
 
 /**
  *
- * @author DragonmanJoel
+ * @author gee
  */
-public class Map implements Serializable {
+public class Map {
     
-    public static int noOfColumns = 25;
-    public static int noOfRows = 25;
+    public static final int NUM_ROWS = 5;
+    public static final int NUM_COLS = 5;
     
-    private Location[][] locations;
+    private Location[][] matrix;
+    public Location[] Location;
     
 
-    public Map() {
-    }
-
-    public Map(int noOfRows, int noOfColumns) {
+    public Map () {
+        matrix = new Location[NUM_ROWS][NUM_COLS];
+        init();
         
-        if( noOfRows < 1 || noOfColumns < 1) {
-            System.out.println("The number of rows and columns must be > zero");
-        }
+    }
+
+    public Map(int i, int i0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public void init() {
         
-    this.noOfRows = noOfRows;
-    this.noOfColumns = noOfColumns;
-    
-    // creates 2-D array for Location objects
-    this.locations = new Location[noOfRows][noOfColumns];
-    
-    for (int row = 0; row < noOfRows; row++){
-            for( int column = 0; column < noOfColumns; column++){
-//                create and initialize new Location object instance
-                Location location = new Location();
-                location.setColumn(column);
-                location.setRow(row);
+      for (int row = 0; row < NUM_ROWS; row++){
+      for( int col = 0; col < NUM_COLS; col++){
+//   create and initialize new Location object instance
+                Location loc = new Location();
+                
+                //Create a random location type
+      loc.setType(LocationType.values()[(int) (Math.random() * LocationType.values().length)]);
+       loc.setRow(row);
+       loc.setCol(col);
+               matrix[row][col] = loc;
 
-//                assign the Location objects to the current position in array
-                locations[row][column] = location;
     }
+}
     }
     
-    }   
-
-    public int getNoOfColumns() {
-        return noOfColumns;
+    public String getMapString() {
+        
+        String rtn ="";
+        for (int row = 0; row < NUM_ROWS; row++){
+      for( int col = 0; col < NUM_COLS; col++){
+          rtn += matrix[row][col].getType().name().charAt(0);
+          
+          if(matrix[row][col].getHero() !=null) {
+              rtn += matrix[row][col].getHero().getName().charAt(0);
+          }
+          rtn += "\t";
+      }
+      rtn += "\n";    
     }
-
-    public void setNoOfColumns(int noOfColumns) {
-        Map.noOfColumns = noOfColumns;
-    }
-
-    public int getNoOfRows() {
-        return noOfRows;
-    }
-
-    public void setNoOfRows(int noOfRows) {
-        Map.noOfRows = noOfRows;
-    }
-
-    public Location[][] getLocations() {
-        return locations;
-    }
-
-    public void setLocations(Location[][] locations) {
-        this.locations = locations;
-    }
+        return rtn;
+}
     
-    
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 71 * hash + Map.noOfColumns;
-        hash = 71 * hash + Map.noOfRows;
-        return hash;
+    public Location getLocation(int row,int col){
+        return matrix[row][col];
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Map other = (Map) obj;
-        if (this.noOfColumns != other.noOfColumns) {
-            return false;
-        }
-        if (Map.noOfRows != other.noOfRows) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Map{" + "noOfColumns=" + noOfColumns + ", noOfRows=" + noOfRows + '}';
-    }
-
-    
-    
-    
-    
 }

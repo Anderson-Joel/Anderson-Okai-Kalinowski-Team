@@ -1,5 +1,6 @@
 package byui.cit260.dragonknight.control;
 
+import static byui.cit260.dragonknight.control.MapControl.moveNPCToStartingLocation;
 import byui.cit260.dragonknight.model.Game;
 import byui.cit260.dragonknight.model.Hero;
 import byui.cit260.dragonknight.model.Inventory;
@@ -44,61 +45,24 @@ public class GameControl {
         Map gameMap = new Map();
         game.setMap(gameMap);
         
-                populateMapWithHeroes(gameMap);
+                moveNPCToStartingLocation(gameMap);
         
         player.setLocation(gameMap.getLocation(0,0));
         
         DragonKnight.setGame(game);
         
     }
-     public static void populateMapWithHeroes(Map map) {
-                 
-         List<Hero> heroes = createHeroList();
-         boolean sucess = false;
-         for (Hero h: heroes) {
-          
-             do {
-                 int row = (int)(Math.random() * Map.NUM_ROWS) ;
-             int col = (int)(Math.random() * Map.NUM_COLS) ;
-             
-            sucess = false;
-             
-             if(map.getLocation(row,col).getHero()  !=null){
-                    map.getLocation(row, col).setHero(h);
-                 sucess = true;
-                 }
-          
-             
-             } while(sucess == false);
-             
-         }
-             }
-     
-     public static List<Hero> createHeroList() {
-         
-         List<Hero> heroList = new ArrayList<>();
-         
-         Hero flash = new Hero();
-         flash.setName("flash");
-         flash.setHitpoints(10);
-         flash.setAttackpoints(2);
-         heroList.add(flash);
-         
-         Hero ironman = new Hero();
-         ironman.setName("ironman");
-         ironman.setHitpoints(5);
-         ironman.setAttackpoints(4);
-         heroList.add(ironman);
-         
-         
-         
-         return heroList;
-         
-         
-     }
 
     public static void saveGame(Game game, String filePath) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    private static void moveNPCToStartingLocation(Map gameMap) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+     
+         
+         
+
 
 }

@@ -6,18 +6,18 @@
 package byui.cit260.dragonknight.model;
 
 import byui.cit260.dragonknight.enums.LocationType;
+import java.io.Serializable;
 
 /**
  *
  * @author gee
  */
-public class Map {
+public class Map implements Serializable {
     
-    public static final int NUM_ROWS = 5;
-    public static final int NUM_COLS = 5;
+    public static final int NUM_ROWS = 25;
+    public static final int NUM_COLS = 25;
     
     private Location[][] matrix;
-    public Location[] Location;
     
 
     public Map () {

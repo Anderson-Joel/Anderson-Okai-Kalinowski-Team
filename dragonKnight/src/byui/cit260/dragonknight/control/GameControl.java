@@ -1,17 +1,14 @@
 package byui.cit260.dragonknight.control;
 
 import byui.cit260.dragonknight.model.Game;
-import byui.cit260.dragonknight.model.Hero;
-import byui.cit260.dragonknight.model.Inventory;
 import byui.cit260.dragonknight.model.Item;
-import byui.cit260.dragonknight.model.Location;
 import byui.cit260.dragonknight.model.Map;
+import byui.cit260.dragonknight.model.NPC;
 import byui.cit260.dragonknight.model.Player;
 import byui.cit260.dragonknight.model.Scene;
 import byui.cit260.dragonknight.model.Weapon;
 import dragonknight.DragonKnight;
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.Point;
 
 /**
  *
@@ -40,14 +37,20 @@ public class GameControl {
         Game game = new Game(); // Create new game
         DragonKnight.setGame(game); //save in DragonKnight
         
-        game.SetPlayer(player); // save player in game
+        game.setPlayer(player); // save player in game
+        
+        Item item = GameControl.createItem(); // create a new item
+        game.setItem(item);
+        
+        Weapon[] weapon = GameControl.createWeapon(); // create a new item
+        game.setItem(item);
         
         Map gameMap = new Map();
         game.setMap(gameMap);
         
                 moveNPCToStartingLocation(gameMap);
         
-        player.setLocation(gameMap.getLocation(0,0));
+        player.setLocation(gameMap.getLocation(0,0)); //move player to starting position in the map
         
         DragonKnight.setGame(game);
         
@@ -57,7 +60,22 @@ public class GameControl {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private static void moveNPCToStartingLocation(Map gameMap) {
+    private static int moveNPCToStartingLocation(Map map) {
+        // for every NPC
+        
+        NPC[]  Npc = NPC.values();
+       return 0;
+    }
+
+    static void assignScenesToLocations(Map map, Scene[] scenes) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private static Item createItem() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private static Weapon[] createWeapon() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

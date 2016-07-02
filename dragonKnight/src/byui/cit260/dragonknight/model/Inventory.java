@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package byui.cit260.dragonknight.model;
 
 import java.io.Serializable;
@@ -111,8 +107,58 @@ public class Inventory implements Serializable {
         return "Inventory{" + "itemName=" + itemName + ", itemAmount=" + itemAmount + ", itemInStock=" + itemInStock + '}';
     }
 
+    public Object getDescription() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Object getRequiredAmount() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Object getQuantityInStock() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
+    public static Inventory[] createInventoryList(){
+        
+        // created array(list) of inventory items
+        Inventory[] inventory = new Inventory[14];
+        
+        Inventory lumber = new Inventory();
+        lumber.setDescription("Lumber");
+        lumber.setQuantityInStock(0);
+        lumber.setRequiredAmount(0);
+        inventory[1] = lumber;
+        
+        Inventory ore = new Inventory();
+        ore.setDescription("Ore");
+        ore.setQuantityInStock(0);
+        ore.setRequiredAmount(0);
+        inventory[1] = ore;
+        
+        Inventory grain = new Inventory();
+        grain.setDescription("Grain");
+        grain.setQuantityInStock(0);
+        grain.setRequiredAmount(0);
+        inventory[2] = grain;
+        
+        return inventory;
+        
+        
+    }
+
+    private void setDescription(String lumber) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void setQuantityInStock(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void setRequiredAmount(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
-    
-    
+
 }

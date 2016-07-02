@@ -3,6 +3,7 @@ package dragonknight;
 import byui.cit260.dragonknight.model.Game;
 import byui.cit260.dragonknight.model.Player;
 import byui.cit260.dragonknight.view.StartProgramView;
+import java.io.BufferedReader;
 
 /**
  *
@@ -15,26 +16,35 @@ public class DragonKnight {
     
     
     public static void main(String[] args) {
-        // TODO code application logic here
+       
     StartProgramView startProgramView = new StartProgramView();
-	startProgramView.displayStartProgramView();
+	
+    startProgramView.displayStartProgramView();
         
     }
 
-    public static Game getGame() {
-        return game;
-    }
-
-    public static void setGame(Game game) {
-        DragonKnight.game = game;
-    }
-
-    public static Player getPlayer() {
+     public static Player getPlayer() {
         return player;
     }
 
     public static void setPlayer(Player player) {
         DragonKnight.player = player;
+    }
+
+    public static Object getCurrentGame() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static BufferedReader getInFile() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void setGame(Game game) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static Game getGame() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
   

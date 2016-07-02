@@ -1,5 +1,6 @@
 package byui.cit260.dragonknight.control;
 
+import byui.cit260.dragonknight.exception.MovementException;
 import byui.cit260.dragonknight.model.Game;
 import byui.cit260.dragonknight.model.Location;
 import byui.cit260.dragonknight.model.Map;
@@ -11,15 +12,16 @@ import byui.cit260.dragonknight.model.Player;
  */
 public class MovementController {
  
-    public boolean moveNorth(Game game) {
+    public boolean moveNorth (Game game) throws MovementException  {
         
         Player player = game.getPlayer();
         Location currentLocation = player.getLocation();
         Map map = game.getMap();
         
         if(currentLocation.getRow() == 0) {
-            return false;
+            throw new MovementException("You cannot move north");
         }
+        
         
         int currentCol = currentLocation.getCol();
         int currentRow = currentLocation.getRow();

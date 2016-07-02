@@ -13,6 +13,7 @@ public class Game implements Serializable {
     public static void getsaveGame(String filePath) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
     
     private String menu;
     private String spell;
@@ -27,7 +28,7 @@ public class Game implements Serializable {
     private Player player;
     private Scene[] scene;
     private Weapon[] weapon;
-    private Inventory inventory;
+    private Inventory[] inventory;
     
     
  
@@ -102,11 +103,11 @@ public class Game implements Serializable {
         this.npc = npc;
     }
 
-    public Inventory getInventory() {
+    public Inventory[] getInventory() {
         return inventory;
     }
 
-    public void setInventory(Inventory inventory) {
+    public void setInventory(Inventory[] inventory) {
         this.inventory = inventory;
     }
 
@@ -196,11 +197,7 @@ public class Game implements Serializable {
         DragonKnight.player = player;
     }
 
-    public void setInventory(Inventory[] inventoryList) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Object getplayer() {
+    public void setItem(Item item) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

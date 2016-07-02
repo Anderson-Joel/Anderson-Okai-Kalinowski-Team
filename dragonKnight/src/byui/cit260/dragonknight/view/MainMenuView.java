@@ -1,9 +1,9 @@
 package byui.cit260.dragonknight.view;
 
 import byui.cit260.dragonknight.control.GameControl;
+import byui.cit260.dragonknight.exception.LoseGameException;
 import byui.cit260.dragonknight.model.Game;
 import dragonknight.DragonKnight;
-import java.util.Scanner;
 
 /**
  *
@@ -56,10 +56,15 @@ public class MainMenuView extends View{
     private void startNewGame() {
         // create new game
 	GameControl.createNewGame(DragonKnight.getPlayer());
-
-	// display the game menue
-	GameMenuView gameMenu = new GameMenuView();
-	gameMenu.displayMenu();
+        
+        try {
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
+        } catch (Exception lge) {
+            System.out.println("You lose");
+        }
+    
+    
 }
 
     private void startExistingGame() {
@@ -67,7 +72,7 @@ public class MainMenuView extends View{
 String filePath = this.getInput();
   try {
             Game.getsaveGame(filePath);
-        } catch (Exception ex){
+        } catch (Exception e){
             
         }
         GameMenuView gameMenu = new GameMenuView();
@@ -85,7 +90,8 @@ String filePath = this.getInput();
         
         try {
             GameControl.saveGame(DragonKnight.getGame(), filePath);
-        } catch (Exception ex){
+        } catch (Exception e){
+            ErroView.display(this.getClass().getName(), "Error on input");
             
 }
     }

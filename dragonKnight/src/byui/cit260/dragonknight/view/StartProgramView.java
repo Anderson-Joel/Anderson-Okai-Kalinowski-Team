@@ -2,6 +2,7 @@ package byui.cit260.dragonknight.view;
 
 import byui.cit260.dragonknight.control.GameControl;
 import byui.cit260.dragonknight.model.Player;
+import dragonknight.DragonKnight;
 import java.util.Scanner;
 
 /**
@@ -13,6 +14,7 @@ public class StartProgramView {
     private String promptMessage;
     private boolean menu;
     private String PlayersName;
+    
     
     public StartProgramView() {
         this.promptMessage = "\nPlease enter your name: ";
@@ -130,10 +132,6 @@ public class StartProgramView {
     mainMenuView.display();
     }
     
-    
-    
-    
-    
      public void displayMainMenuView(){
         
         boolean done = false; //set flag to not done
@@ -161,15 +159,15 @@ public class StartProgramView {
         
         Scanner keyboard = new Scanner(System.in);
         boolean valid =false;
-        String selection = null;
+        String values = null;
         //while a valid name has not been retrieved
         while (!valid) {
             
             //get the value entered from the keyboard
-            selection = keyboard.nextLine();
-            selection = selection.trim();
+            values = keyboard.nextLine();
+            values = values.trim();
             
-            if (selection.length() <1) { // blank value entered
+            if (values.length() <1) { // blank value entered
                 System.out.println("\n*** Invalid selection *** Try again");
                 continue;
                 
@@ -177,6 +175,18 @@ public class StartProgramView {
            break; 
         }
         
-        return selection; //return the name
+        return values; //return the name
     }
-}
+    
+    private void startNewGame() {
+        
+        GameControl.createNewGame(DragonKnight.getPlayer());
+        // Create GameMenuView object
+	GameMenuView gameMenuView = new GameMenuView();
+
+    // Display the game menu view
+    gameMenuView.display();
+    
+       } 
+    }  
+

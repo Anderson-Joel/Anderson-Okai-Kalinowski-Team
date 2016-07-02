@@ -1,6 +1,5 @@
 package byui.cit260.dragonknight.control;
 
-import static byui.cit260.dragonknight.control.MapControl.moveNPCToStartingLocation;
 import byui.cit260.dragonknight.model.Game;
 import byui.cit260.dragonknight.model.Hero;
 import byui.cit260.dragonknight.model.Inventory;
@@ -8,6 +7,7 @@ import byui.cit260.dragonknight.model.Item;
 import byui.cit260.dragonknight.model.Location;
 import byui.cit260.dragonknight.model.Map;
 import byui.cit260.dragonknight.model.Player;
+import byui.cit260.dragonknight.model.Scene;
 import byui.cit260.dragonknight.model.Weapon;
 import dragonknight.DragonKnight;
 import java.util.ArrayList;
@@ -58,6 +58,10 @@ public class GameControl {
     }
 
     private static void moveNPCToStartingLocation(Map gameMap) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    static void assignScenesToLocations(Map map, Scene[] scenes) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
      

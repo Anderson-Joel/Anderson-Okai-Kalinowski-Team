@@ -21,14 +21,10 @@ public class Map implements Serializable {
     private Location[][] matrix;
     
 
-    public Map() {
+    public Map(int noOfRows, int noOfColumns) {
          matrix = new Location[NUM_ROWS][NUM_COLS];
         init();
         
-    }
-
-    public Map(int i, int i0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
@@ -49,7 +45,7 @@ public class Map implements Serializable {
 }
     }
     
-    public String getMapString() {
+    public String getMap() {
         
         String rtn ="";
         for (int row = 0; row < NUM_ROWS; row++){
@@ -66,12 +62,12 @@ public class Map implements Serializable {
         return rtn;
 }
 
-    public Location getLocation(int row, int col) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    //Location[][] getLocations() {
+    //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //}
 
-    Location[][] getLocations() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Location getLocation(int row, int col) {
+        return matrix[row][col];
     }
 
     

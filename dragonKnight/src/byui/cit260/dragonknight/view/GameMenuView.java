@@ -129,7 +129,7 @@ class GameMenuView extends View{
     }
 
     private void viewMap() {
-        System.out.println(DragonKnight.getGame().getMap().getMapString());
+        System.out.println(DragonKnight.getGame().getMap());
     }
     
    private void viewCurrentLocation() {

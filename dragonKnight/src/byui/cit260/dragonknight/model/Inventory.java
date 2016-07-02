@@ -148,7 +148,7 @@ public class Inventory implements Serializable {
         
     }
 
-    private void setDescription(String lumber) {
+    public void setDescription(String lumber) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

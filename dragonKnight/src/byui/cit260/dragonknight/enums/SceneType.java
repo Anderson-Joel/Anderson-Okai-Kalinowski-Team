@@ -11,27 +11,33 @@ package byui.cit260.dragonknight.enums;
  */
 public enum SceneType {
     
-    
-    strat,
-    angel,
-    lumber,
-    camp,
-    finish,
-    shop,
+    start, 
+    desert, 
+    plain, 
+    water, 
+    forest, 
+    mountain, 
     town,
-    cave,
-    forest,
-    water,
-    castle;
+    road,
+    store, 
+    castle, 
+    darkArea, 
+    cave, 
+    finish;
 
-    public static class start {
+    
+    //strat,
+    //angel,
+    //lumber,
+    //camp,
+    //finish,
+    //shop,
+    //town,
+    //cave,
+    //forest,
+    //water,
+    //castle;
 
-        public static int ordinal() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        public start() {
-        }
-    }
+    
     
 }

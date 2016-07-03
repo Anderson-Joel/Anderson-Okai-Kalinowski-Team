@@ -14,6 +14,7 @@ public class Scene implements Serializable{
     
     private Game game;
     private Location[] location;
+    private SceneType sceneType;
 
     public Scene() {
     }
@@ -40,6 +41,14 @@ public class Scene implements Serializable{
 
     public void setLocation(Location[] location) {
         this.location = location;
+    }
+
+    public SceneType getSceneType() {
+        return sceneType;
+    }
+
+    public void setSceneType(SceneType sceneType) {
+        this.sceneType = sceneType;
     }
     
     
@@ -80,13 +89,12 @@ public class Scene implements Serializable{
         
         Scene startingScene = new Scene();
         startingScene.setDescription(
-        "The Dragons await to destroy,"
-         +"nations are conquered,"
-         +"heros are fallen"
-         +"who will preveal?");
+        "Evil has decended upon the land, "
+         +"heros are falling, "
+         +"and hope is disapearing."
+         +"Will this evil preveal?");
      startingScene.setMapSymbol(" ST ");
      startingScene.setBlocked(false);
-     startingScene.setTravelTime(240);
      scenes[SceneType.start.ordinal()] = startingScene;
      
      Scene finishScene = new Scene();
@@ -94,24 +102,76 @@ public class Scene implements Serializable{
      "Congratulation! Well done you have emerge victorious against the Evil Dragon Lord."
      +"You have just launced your ship of curious workmanship and "
      +"begun your journey to home.");
-     finishScene.setMapSymbol( " FN ");
+     finishScene.setMapSymbol(" FN ");
      finishScene.setBlocked(false);
-     finishScene.setTravelTime((int) Double.POSITIVE_INFINITY);
      scenes[SceneType.finish.ordinal()] = finishScene;
-     campScene.setDescription(
-     "This is the camp where you work on building the ship.");
-     campScene.setMapSymbol(" BY ");
-     campScene.setBlocked(false);
-     campScene.setTravelTime(600);
-        Scene campScene = null;
-     scenes[SceneType.camp.ordinal()] = campScene;
-          
      
-        
+     Scene plain = new Scene();
+     plain.setDescription("A gental brezze sweeping through the plains.");
+     plain.setMapSymbol(" P ");
+     plain.setBlocked(false);
+     scenes[SceneType.plain.ordinal()] = plain;
+     
+     Scene water = new Scene();
+     water.setDescription(
+     "A really wet place.");
+     water.setMapSymbol(" W ");
+     water.setBlocked(false);
+     scenes[SceneType.water.ordinal()] = water;
+     
+     Scene forest = new Scene();
+     forest.setDescription(
+     "Trees everywhere.");
+     forest.setMapSymbol(" F ");
+     forest.setBlocked(false);
+     scenes[SceneType.forest.ordinal()] = forest;
+     
+     Scene town = new Scene();
+     town.setDescription(
+     "Small town where people live.");
+     town.setMapSymbol(" T ");
+     town.setBlocked(false);
+     scenes[SceneType.town.ordinal()] = town;
+     
+     Scene store = new Scene();
+     store.setDescription(
+     "Time to buy.");
+     store.setMapSymbol(" S ");
+     store.setBlocked(false);
+     scenes[SceneType.store.ordinal()] = store;
+     
+     Scene castle = new Scene();
+     castle.setDescription(
+     "Royalty lives here.");
+     castle.setMapSymbol(" C ");
+     castle.setBlocked(false);
+     scenes[SceneType.castle.ordinal()] = castle;
+     
+     Scene darkArea = new Scene();
+     darkArea.setDescription(
+     "The Dark Lord lives.");
+     darkArea.setMapSymbol(" DA ");
+     darkArea.setBlocked(false);
+     scenes[SceneType.darkArea.ordinal()] = darkArea;
+     
+     Scene cave = new Scene();
+     cave.setDescription(
+     "It's really dark in here.");
+     cave.setMapSymbol(" Ca ");
+     cave.setBlocked(false);
+     scenes[SceneType.cave.ordinal()] = cave;
+     
+     Scene mountain = new Scene();
+     mountain.setDescription(
+     "You can see the entire kingdom here.");
+     mountain.setMapSymbol(" M ");
+     mountain.setBlocked(false);
+     scenes[SceneType.mountain.ordinal()] = mountain;
+     
         return scenes;
     }
 
-    private void setMapSymbol(String _st_) {
+    private void setMapSymbol(String _c_) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -119,8 +179,4 @@ public class Scene implements Serializable{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void setTravelTime(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

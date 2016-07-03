@@ -66,8 +66,12 @@ public class Map implements Serializable {
     //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     //}
 
-    public Location getLocation(int row, int col) {
+    public Location getLocations(int row, int col) {
         return matrix[row][col];
+    }
+
+    public Location[][] getLocations() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

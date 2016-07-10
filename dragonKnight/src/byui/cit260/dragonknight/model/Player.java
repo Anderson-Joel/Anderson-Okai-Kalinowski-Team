@@ -1,5 +1,8 @@
 package byui.cit260.dragonknight.model;
 
+import byui.cit260.dragonknight.view.ErrorView;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -122,7 +125,32 @@ public class Player implements Serializable {
         return "Player{" + "name=" + name + ", classSelection=" + classSelection + ", attributes=" + attributes + ", race=" + race + '}';
     }
     
-    
+    public void savePlayersNames() throws IOException {
+        
+        FileWriter outFile = null;
+      
+        String fileLocation ="players.txt";
+        
+        try {
+            outFile = new FileWriter(fileLocation);
+            
+            outFile.write("Hadrian\n");
+            outFile.write("Tybalt\n");
+            outFile.write(" Tyrionn\n");
+            outFile.write("Adelaide\n");
+            outFile.write("Fendrel\n");
+            
+            outFile.flush();
+            
+        } catch (IOException ex) {
+             ErrorView.display("MainMenuView", ex.getMessage());
+        }finally{
+            if (outFile != null) {
+                outFile.close();
+            }
+            
+        }
+    }
 
 }
 

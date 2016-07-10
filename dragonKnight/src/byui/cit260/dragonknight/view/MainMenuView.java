@@ -2,8 +2,11 @@ package byui.cit260.dragonknight.view;
 
 import byui.cit260.dragonknight.control.GameControl;
 import byui.cit260.dragonknight.exception.LoseGameException;
+import byui.cit260.dragonknight.exception.MapControlException;
 import byui.cit260.dragonknight.model.Game;
 import dragonknight.DragonKnight;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,29 +34,29 @@ public class MainMenuView extends View{
     public boolean doAction(String value) {
 
 	value = value.toUpperCase(); // convert choice to upper case
-
-	switch (value) {
-		case "N": // create and start a new game 
-			this.startNewGame();
+        char choice = value.charAt(0); // get first character entered
+        
+	switch (choice) {
+		case 'N': 
 			break;
-		case "G": // get and start an existing game 
-			this.startExistingGame();
+		case 'G': // get and start an existing game 
+			this.startSavedGame();
 			break;
-		case "H": // display the help menu 
+		case 'H': // display the help menu 
 			this.displayHelpMenu();
 			break;
-		case "S": // save the current game
+		case 'S': // save the current game
 			this.saveGame();
 			break;      
 		default:
-			System.out.println("\n*** Invalid Selectino *** Try Again");
+			ErrorView.display("MainMenuView", "*** Invalid Selection *** Try Again");
 			break;
 	}
 
 	return false;
 }
 
-    private void startNewGame() {
+    private void startNewGame() throws MapControlException {
         // create new game
 	GameControl.createNewGame(DragonKnight.getPlayer());
         
@@ -67,13 +70,13 @@ public class MainMenuView extends View{
     
 }
 
-    private void startExistingGame() {
-       System.out.println("\n\nEnter the file path for file where the game " + "was saved last.");
+    private void startSavedGame() {
+       this.console.println("\n\nEnter the file path for file where the game " + "was saved last.");
 String filePath = this.getInput();
   try {
-            Game.getsaveGame(filePath);
-        } catch (Exception e){
-            
+            GameControl.getSavedGame(filePath);
+        } catch (Exception ex){
+            ErrorView.display("MainMenuView", ex.getMessage());
         }
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();
@@ -85,15 +88,18 @@ String filePath = this.getInput();
     }
 
     private void saveGame() {
-        System.out.println("\n\nEnter the file path for file where the game " + "is to be saved.");
+        this.console.println("\n\nEnter the file path for file where the game " + "is to be saved.");
         String filePath = this.getInput();
         
         try {
             GameControl.saveGame(DragonKnight.getGame(), filePath);
-        } catch (Exception e){
-            ErroView.display(this.getClass().getName(), "Error on input");
+        } catch (Exception ex){
+            ErrorView.display("MainMenuView", ex.getMessage());
             
 }
+        // display the game menu
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
     }
 
     void displayMainMenuView() {

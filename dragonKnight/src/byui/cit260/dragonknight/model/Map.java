@@ -5,7 +5,6 @@
  */
 package byui.cit260.dragonknight.model;
 
-import byui.cit260.dragonknight.control.GameControl;
 import byui.cit260.dragonknight.enums.LocationType;
 import java.io.Serializable;
 
@@ -71,6 +70,10 @@ public class Map implements Serializable {
     }
 
     public Location[][] getLocations() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Location getLocation(int i, int i0) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

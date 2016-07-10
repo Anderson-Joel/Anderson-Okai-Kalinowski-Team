@@ -1,11 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package byui.cit260.dragonknight.view;
 
-import java.util.Scanner;
+import dragonknight.DragonKnight;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 
 /**
  *
@@ -13,7 +11,11 @@ import java.util.Scanner;
  */
 
 public abstract class View implements ViewInterface {
+    
     protected String displayMessage;
+    protected final PrintWriter console = DragonKnight.getOutFile;
+    protected final BufferedReader keyboard = DragonKnight.getInFile();
+    private boolean message;
     
     public View(){
         
@@ -24,12 +26,13 @@ public abstract class View implements ViewInterface {
     }
     @Override
     public void display (){
+        String value;
         boolean done = false;
         do{
             //prompt for and get players name
-            String value = this.getInput();
-        if (value.toUpperCase().equals("Q")) // useer wants to quit
-            return; // exit the view
+         this.console.println(this.message);
+        value = this.getInput();// useer wants to quit
+             // exit the view
         
         //do the requested action and display the next view 
         done = this.doAction(value);
@@ -41,27 +44,31 @@ public abstract class View implements ViewInterface {
     @Override
     public String getInput() {
         
-        Scanner keyboard = new Scanner(System.in);
         boolean valid = false;
         String value = null;
-        
+        try {
         //while a valid name has not been retrieved 
         while (!valid) {
-            //prompt for the player's name
-            System.out.println("\n" + this.displayMessage);
+            
             
             //get the value entered from the keyboard
-            value = keyboard.nextLine();
+            value = this.keyboard.readLine();
             value = value.trim();
             
+            
+            
             if (value.length() < 1) { //blank value entered
-                System.out.println("\n*** You must enter a value **");
+                ErrorView.display(this.getClass().getName(),
+                        "You must enter a value.");
                 continue;
             }
             break;
         }
-            
-     return value; // return the name
+          } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(),
+                    "Error reading input: " + e.getMessage());
+        }    
+     return null; // return the name
         }
 
 }

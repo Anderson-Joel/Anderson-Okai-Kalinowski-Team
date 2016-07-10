@@ -2,6 +2,7 @@ package byui.cit260.dragonknight.control;
 
 import byui.cit260.dragonknight.enums.SceneType;
 import byui.cit260.dragonknight.exception.MapControlException;
+import byui.cit260.dragonknight.exception.GameControlException;
 import byui.cit260.dragonknight.model.Game;
 import byui.cit260.dragonknight.model.Inventory;
 import byui.cit260.dragonknight.model.Item;
@@ -13,6 +14,10 @@ import byui.cit260.dragonknight.model.Scene;
 import byui.cit260.dragonknight.model.Weapon;
 import dragonknight.DragonKnight;
 import java.awt.Point;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  *
@@ -57,10 +62,35 @@ public class GameControl {
         
     }
 
-    public static void saveGame(Game game, String filePath) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static void saveGame(Game game, String filePath) 
+        throws GameControlException {
+        String filepath = null;
+        try( FileOutputStream fops = new FileOutputStream(filepath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(game);    //write the game object out to file    }
     }
-
+catch(Exception e) {
+    throw new GameControlException(e.getMessage());
+}
+    }
+    
+     public static void getSavedGame(String filePath) throws GameControlException {
+         Game game = null;
+        String filepath = null;
+     try( FileInputStream fips = new FileInputStream(filepath)) {
+         ObjectInputStream input =  new ObjectInputStream(fips);
+         
+         game = (Game) input.readObject(); // read the game object from file
+     } 
+     catch(Exception e) {
+         throw new GameControlException(e.getMessage());
+     }
+     
+     // close the output file
+     DragonKnight.setCurrentGame(game); // save in DragonKnight
+    }
+    
     private static int moveNPCToStartingLocation(Map map) {
         // for every NPC
         
@@ -815,9 +845,5 @@ locations[24][24].setScene(scenes[SceneType.darkArea.ordinal()]);
     
     return inventory;
     }
-     
-         
-         
-
 
 }

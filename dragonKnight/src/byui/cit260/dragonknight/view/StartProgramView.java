@@ -1,8 +1,11 @@
 package byui.cit260.dragonknight.view;
 
 import byui.cit260.dragonknight.control.GameControl;
+import byui.cit260.dragonknight.exception.MapControlException;
 import byui.cit260.dragonknight.model.Player;
 import dragonknight.DragonKnight;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -14,6 +17,9 @@ public class StartProgramView {
     private String promptMessage;
     private boolean menu;
     private String PlayersName;
+    protected final PrintWriter console = DragonKnight.getOutFile;
+    protected final BufferedReader keyboard = DragonKnight.getInFile();
+    
     
     
     public StartProgramView() {
@@ -75,14 +81,14 @@ public class StartProgramView {
     }
 
     private String getPlayersName() {
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
+       
 	String value = ""; // value to be returned
 	boolean valid = false; // initialize to no valid
-
+try {
 	while (!valid) {  //loop while an invalid value is enter 
 		System.out.println("\n" + this.promptMessage);
 
-		value = keyboard.nextLine(); // get next line typed on keyboard
+		value = this.keyboard.readLine(); // get next line typed on keyboard
 		value = value.trim(); // trim off leading and trailiing blanks
 
 		if (value.length() <1 ) { // blanks
@@ -94,7 +100,9 @@ public class StartProgramView {
 		break; // end the loop
 
 	}
-
+} catch (Exception e) {
+    System.out.println("Error reading input: " + e.getMessage());
+}
 	return value;  // return the value entered
     }
 
@@ -157,14 +165,15 @@ public class StartProgramView {
     
     public String getInput(){
         
-        Scanner keyboard = new Scanner(System.in);
+        
         boolean valid =false;
         String values = null;
+        try {
         //while a valid name has not been retrieved
         while (!valid) {
             
             //get the value entered from the keyboard
-            values = keyboard.nextLine();
+            values = this.keyboard.readLine();
             values = values.trim();
             
             if (values.length() <1) { // blank value entered
@@ -174,11 +183,13 @@ public class StartProgramView {
             }
            break; 
         }
-        
+        } catch (Exception e) {
+            System.out.println("Error reading input: " + e.getMessage());
+        } 
         return values; //return the name
     }
     
-    private void startNewGame() {
+    private void startNewGame() throws MapControlException {
         
         GameControl.createNewGame(DragonKnight.getPlayer());
         // Create GameMenuView object

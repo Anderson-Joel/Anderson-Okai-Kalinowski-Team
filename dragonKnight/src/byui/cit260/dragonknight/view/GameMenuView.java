@@ -18,139 +18,138 @@ import java.util.logging.Logger;
  *
  * @author gee
  */
-class GameMenuView extends View{
-    
+class GameMenuView extends View {
+
     protected final BufferedReader keyboard = DragonKnight.getInFile();
 
     public GameMenuView() {
-	super("\n"
-		  + "\n-----------------------------------------------"
-		  + "\n| Game Menu                                    "
-		  + "\n-----------------------------------------------"
-		  + "\nP - Search for people"
-		  + "\nN - Move North"
-		  + "\nE - Move East"
-                  + "\nS - Move South"
-		  + "\nW - Move West"
-                  + "\nM - View Map"
-                  + "\nL - View Current Location"
-                  + "\nW - viewInventory"
-		  + "\nQ - Return to Main Menu"
-		  + "\n-----------------------------------------------");
+        super("\n"
+                + "\n-----------------------------------------------"
+                + "\n| Game Menu                                    "
+                + "\n-----------------------------------------------"
+                + "\nP - Search for people"
+                + "\nN - Move North"
+                + "\nE - Move East"
+                + "\nS - Move South"
+                + "\nW - Move West"
+                + "\nM - View Map"
+                + "\nL - View Current Location"
+                + "\nW - viewInventory"
+                + "\nQ - Return to Main Menu"
+                + "\n-----------------------------------------------");
     }
-    
-    
-    
+
     @Override
     public boolean doAction(String value) {
 
-	value = value.toUpperCase(); // convert choice to upper case
+        value = value.toUpperCase(); // convert choice to upper case
 
-	switch (value) {
-            
-                case "P" :
+        switch (value) {
+
+            case "P":
                 searchPeople();
                 break;
-                case "N" :
+            case "N":
                 moveNorth();
                 break;
-                case "E" :
+            case "E":
                 moveEast();
                 break;
-                case "S" :
-        {
-            try {
-                moveSouth();
-            } catch (LoseGameException e) {
-                Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, e);
+            case "S": {
+                try {
+                    moveSouth();
+                } catch (LoseGameException e) {
+                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, e);
+                }
             }
-        }
-                break;
-                case "W" :
+            break;
+            case "W":
                 moveWest();
                 break;
-                case "M" :
+            case "M":
                 viewMap();
                 break;
-                case "L" :
+            case "L":
                 viewCurrentLocation();
                 break;
-                case "Q" :
+            case "Q":
                 return true;
-                default:
-                    System.out.println("Invalid option");
-                    break;
-            
-                
+            default:
+                System.out.println("Invalid option");
+                break;
+
         }
-           return false;
-        }
+        return false;
+    }
 
     private void searchPeople() {
-        System.out.println ("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private void moveNorth() {
         MovementController mc = new MovementController();
-        try{
+        try {
             mc.moveNorth(DragonKnight.getGame());
             System.out.println("You moved north");
-        } catch (MovementException me )  {
+        } catch (MovementException me) {
             System.out.println("You cannot move there");
         } catch (Exception e) {
-        }finally {
+        } finally {
             //always executes
-             System.out.println("Finally executes");
+            System.out.println("Finally executes");
         }
-        
+        //CHECK THIS LOCATION - IF A MONSTER EXISTS AT THIS LOCATION GO TO BATTLE VIEW
+
     }
 
     private void moveEast() {
-       MovementController mc = new MovementController();
-        if (mc.moveEast(DragonKnight.getGame()) == false){
+        MovementController mc = new MovementController();
+        if (mc.moveEast(DragonKnight.getGame()) == false) {
             System.out.println("You cannot move towards that direction");
         }
+        //CHECK THIS LOCATION - IF A MONSTER EXISTS AT THIS LOCATION GO TO BATTLE VIEW
+        //This check should be done in the battle controller or movement controller.
+        //Just a function that returns true if monster exists at location
     }
 
     private void moveSouth() throws LoseGameException {
-       MovementController mc = new MovementController();
-        if (mc.moveSouth(DragonKnight.getGame()) == false){
+        MovementController mc = new MovementController();
+        if (mc.moveSouth(DragonKnight.getGame()) == false) {
             System.out.println("You cannot move towards that direction");
         }
-       throw new LoseGameException();
-        
+        throw new LoseGameException();
+        //CHECK THIS LOCATION - IF A MONSTER EXISTS AT THIS LOCATION GO TO BATTLE VIEW
+
     }
 
     private void moveWest() {
-      MovementController mc = new MovementController();
-        if (mc.moveWest(DragonKnight.getGame()) == false){
+        MovementController mc = new MovementController();
+        if (mc.moveWest(DragonKnight.getGame()) == false) {
             System.out.println("You cannot move towards that direction");
         }
+        //CHECK THIS LOCATION - IF A MONSTER EXISTS AT THIS LOCATION GO TO BATTLE VIEW
     }
 
     private void viewMap() {
         System.out.println(DragonKnight.getGame().getMap());
     }
-    
-   private void viewCurrentLocation() {
-       
-      String input = "";
-      try {
-      input = keyboard.readLine();
-      } catch (Exception e) {
-          //baried
-      }
-      int myNum = 0;
-      try{
-      myNum = Integer.parseInt(input);
-      } catch (Exception e) {
-          System.out.println("Bad numeric input");
-      }
-      
-       Location l = DragonKnight.getGame().getPlayer().getLocation();
-       System.out.println("You are at ("+ l.getRow() + ", " + l.getCol() + ")");
-   } 
-    }
 
-  
-   
+    private void viewCurrentLocation() {
+
+        String input = "";
+        try {
+            input = keyboard.readLine();
+        } catch (Exception e) {
+            //baried
+        }
+        int myNum = 0;
+        try {
+            myNum = Integer.parseInt(input);
+        } catch (Exception e) {
+            System.out.println("Bad numeric input");
+        }
+
+        Location l = DragonKnight.getGame().getPlayer().getLocation();
+        System.out.println("You are at (" + l.getRow() + ", " + l.getCol() + ")");
+    }
+}

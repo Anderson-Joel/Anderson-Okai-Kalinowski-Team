@@ -167,16 +167,16 @@ try {
         
         
         boolean valid =false;
-        String values = null;
+        String selection = null;
         try {
         //while a valid name has not been retrieved
         while (!valid) {
             
             //get the value entered from the keyboard
-            values = this.keyboard.readLine();
-            values = values.trim();
+            selection = this.keyboard.readLine();
+            selection = selection.trim();
             
-            if (values.length() <1) { // blank value entered
+            if (selection.length() <1) { // blank value entered
                 System.out.println("\n*** Invalid selection *** Try again");
                 continue;
                 
@@ -186,7 +186,7 @@ try {
         } catch (Exception e) {
             System.out.println("Error reading input: " + e.getMessage());
         } 
-        return values; //return the name
+        return selection; //return the name
     }
     
     private void startNewGame() throws MapControlException {

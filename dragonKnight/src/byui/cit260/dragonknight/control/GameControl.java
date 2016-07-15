@@ -62,9 +62,9 @@ public class GameControl {
         
     }
 
-    public static void saveGame(Game game, String filePath) 
+    public static void saveGame(Game game, String filepath) 
         throws GameControlException {
-        String filepath = null;
+        
         try( FileOutputStream fops = new FileOutputStream(filepath)) {
             ObjectOutputStream output = new ObjectOutputStream(fops);
             

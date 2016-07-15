@@ -24,9 +24,9 @@ public class BattleView extends View {
 		  + "\n-----------------------------------------------"
 		  + "\n| Game Menu                                    "
 		  + "\n-----------------------------------------------"
-		  + "\nF - Fight"
-		  + "\nD - Defend"
-		  + "\nM - Magic"
+		  + "\nF - Fight - Medium Damage given & received     "
+		  + "\nD - Defend - Low Damage given & received       "
+		  + "\nM - Magic - High Damage given & received       "
 		  + "\nR - Run Away"
 		  + "\n-----------------------------------------------");
     }

@@ -28,9 +28,12 @@ public class BattleController {
         p.setHitPoint(p.getHitPoint() - monsterInflictDamage);
         
         // maybe write some confirmation text that in fact you have chosen to melee with the monster
+        System.out.println("You have " + p.getHitPoint() + " HP");
+        System.out.println("Monster has " + m.getHitPoint() + " HP");
         
         if(p.getHitPoint() > 0){
             if(m.getHitPoint() <= 0) {
+                System.out.println("Monster Died");
                 return true;
             } else {
                 return false;
@@ -58,9 +61,13 @@ public class BattleController {
         p.setHitPoint(p.getHitPoint() - monsterInflictDamage);
         m.setHitPoint(m.getHitPoint() - playerInflictDamage);
         
+        System.out.println("You have " + p.getHitPoint() + " HP");
+        System.out.println("Monster has " + m.getHitPoint() + " HP");
+        
         
         if(p.getHitPoint() > 0){
             if(m.getHitPoint() <= 0) {
+                System.out.println("Monster Died");
                 return true;
             } else {
                 return false;
@@ -73,11 +80,7 @@ public class BattleController {
         
         
         
-    //    if(m.getHitPoint() <= 0) {
-    //        return true;
-    //    } else {
-    //        return false;
-    //    } 
+
         
     }
     
@@ -90,9 +93,13 @@ public class BattleController {
         p.setHitPoint(p.getHitPoint() - monsterInflictDamage);
         m.setHitPoint(m.getHitPoint() - playerInflictDamage);
         
+        System.out.println("You have " + p.getHitPoint() + " HP");
+        System.out.println("Monster has " + m.getHitPoint() + " HP");
+        
         
         if(p.getHitPoint() > 0){
             if(m.getHitPoint() <= 0) {
+                System.out.println("Monster Died");
                 return true;
             } else {
                 return false;
@@ -109,8 +116,10 @@ public class BattleController {
         int chanceOfRunningAway = (int) (Player.MAX_DAMAGE * Math.random() * 5) + 1;
         
         if (chanceOfRunningAway < 50) {
+            System.out.println("Got Away Safely");
             return true;
         } else {
+            System.out.println("Didn't get away");
             return false;
         }
     }

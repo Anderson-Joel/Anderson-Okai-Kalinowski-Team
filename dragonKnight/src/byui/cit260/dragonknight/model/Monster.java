@@ -7,6 +7,9 @@ import java.util.Objects;
  * @author gee
  */
 public class Monster implements Serializable { 
+    
+    public static final int MAX__MONSTER_DAMAGE = 9;
+    
     private String name;
     private String description;
     private double hitPoint;

@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 public class Player implements Serializable {
 
-    public static final int PLAYER_INFLICT_DAMAGE = 9;
+    public static final int MAX_DAMAGE = 9;
     
     // class instance variables
     private String name;

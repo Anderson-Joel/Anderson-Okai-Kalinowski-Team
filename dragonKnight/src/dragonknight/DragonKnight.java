@@ -5,6 +5,7 @@ import byui.cit260.dragonknight.model.Player;
 import byui.cit260.dragonknight.view.StartProgramView;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 /**
@@ -52,8 +53,18 @@ public class DragonKnight {
         try {
             
             //open charcter stream files for end user input output
+            DragonKnight.inFile = new BufferedReader(new InputStreamReader(System.in));
+            DragonKnight.outFile = new PrintWriter(System.out, true);
+            
             String filePath = "log.txt";
             DragonKnight.logFile = new PrintWriter(filePath);
+            
+            
+            // create StartProgram View and start the program
+            StartProgramView startProgramView = new StartProgramView();
+            startProgramView.display();
+            return;
+            
         } catch (Throwable e)  {
             
             System.out.println("Exception:" + e.toString()+

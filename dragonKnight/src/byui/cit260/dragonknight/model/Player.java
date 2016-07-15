@@ -14,6 +14,7 @@ import java.util.Objects;
  */
 public class Player implements Serializable {
 
+    public static final int MAX_DAMAGE = 9;
     
     // class instance variables
     private String name;
@@ -22,6 +23,8 @@ public class Player implements Serializable {
     private String classSelection;
     private String attributes;
     private String race;
+    private double hitPoint;
+    
     
     private Game[] game;
     private Location location;
@@ -81,6 +84,13 @@ public class Player implements Serializable {
         this.location = location;
     }
     
+    public double getHitPoint() {
+         return hitPoint;
+     }
+    
+    public void setHitPoint (double hitPoint) {
+        this.hitPoint = hitPoint;
+    }
     
 
     @Override
@@ -136,7 +146,7 @@ public class Player implements Serializable {
             
             outFile.write("Hadrian\n");
             outFile.write("Tybalt\n");
-            outFile.write(" Tyrionn\n");
+            outFile.write("Tyrionn\n");
             outFile.write("Adelaide\n");
             outFile.write("Fendrel\n");
             

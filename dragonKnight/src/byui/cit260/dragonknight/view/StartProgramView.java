@@ -24,6 +24,7 @@ public class StartProgramView {
     
     public StartProgramView() {
         this.promptMessage = "\nPlease enter your name: ";
+        
         // display the banner when view is created
         this.displayBanner();
     }
@@ -84,6 +85,7 @@ public class StartProgramView {
        
 	String value = ""; // value to be returned
 	boolean valid = false; // initialize to no valid
+       
 try {
 	while (!valid) {  //loop while an invalid value is enter 
 		System.out.println("\n" + this.promptMessage);
@@ -104,7 +106,7 @@ try {
     System.out.println("Error reading input: " + e.getMessage());
 }
 	return value;  // return the value entered
-    }
+   }
 
     private boolean doAction(String playersName) {
         if (playersName.length() < 2) {
@@ -199,5 +201,13 @@ try {
     gameMenuView.display();
     
        } 
+
+    public void display() {
+        
+        System.out.println("YOU ARE AWESOME");
+        // StartProgramView startProgramView = new StartProgramView();
+        
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     }  
 

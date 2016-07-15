@@ -146,7 +146,7 @@ public class Player implements Serializable {
             
             outFile.write("Hadrian\n");
             outFile.write("Tybalt\n");
-            outFile.write(" Tyrionn\n");
+            outFile.write("Tyrionn\n");
             outFile.write("Adelaide\n");
             outFile.write("Fendrel\n");
             

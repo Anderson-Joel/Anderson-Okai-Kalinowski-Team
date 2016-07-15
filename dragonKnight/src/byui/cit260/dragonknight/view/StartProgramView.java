@@ -4,6 +4,7 @@ import byui.cit260.dragonknight.control.GameControl;
 import byui.cit260.dragonknight.exception.MapControlException;
 import byui.cit260.dragonknight.model.Player;
 import dragonknight.DragonKnight;
+import static dragonknight.DragonKnight.player;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -24,6 +25,7 @@ public class StartProgramView {
     
     public StartProgramView() {
         this.promptMessage = "\nPlease enter your name: ";
+        this.getPlayersName();
         
         // display the banner when view is created
         this.displayBanner();
@@ -36,7 +38,7 @@ public class StartProgramView {
         + "\n**************************************************************"
         + "\n*------------------------------------------------------------*"
         + "\n*------------------------------------------------------------*"
-        + "\n*------------------------------------------------------------*"
+        + "\n*-----------------EVERYTHING IS AWESOME!!!-------------------*"
         + "\n*------------------------------------------------------------*"
         + "\n*------------------------------------------------------------*"
         + "\n*--------------------Insert Story Here-----------------------*"
@@ -56,8 +58,10 @@ public class StartProgramView {
         + "\n*------------------------------------------------------------*"
         + "\n**************************************************************"
         + "\n**************************************************************"
-        + "\n**************************************************************" 
-        );
+        + "\n**************************************************************"
+        );        
+        this.displayNextView(player);
+       
     }
     public void displayWelcomeMessage (String PlayerName) {
         System.out.println("==========================");
@@ -204,10 +208,10 @@ try {
 
     public void display() {
         
-        System.out.println("YOU ARE AWESOME");
-        // StartProgramView startProgramView = new StartProgramView();
+        //System.out.println("YOU ARE AWESOME");
+        //StartProgramView startProgramView = new StartProgramView();
         
         // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    }  
+}
 

@@ -92,9 +92,9 @@ public class Scene implements Serializable{
         "Evil has decended upon the land, "
          +"heros are falling, "
          +"and hope is disapearing."
-         +"Will this evil preveal?"
-        + "You have awaken in a cave with a fallen dragon" + "and have no memory of how you got there."
-        + "The only thing that you can remember is to collect two special stones to stop"
+         +"Will this evil preveal?\n"
+        + "You have awaken in a cave with a fallen dragon and have no memory of how you got there.\n"
+        + "The only thing that you can remember is to collect two special stones to stop\n"
         + "the Evil Dragon Lord from entering the kingdom.");
      startingScene.setMapSymbol(" ST ");
      startingScene.setBlocked(false);

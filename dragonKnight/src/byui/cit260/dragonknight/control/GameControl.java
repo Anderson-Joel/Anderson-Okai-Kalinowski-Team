@@ -56,7 +56,7 @@ public class GameControl {
 
         MapControl.moveNPCToStartingLocation(map);
 
-        player.setLocation(map.getLocation(0, 0)); //move player to starting position in the map
+        player.setLocation(map.getLocation(17, 15)); //move player to starting position in the map
 
         DragonKnight.setGame(game);
 
@@ -575,7 +575,7 @@ public class GameControl {
         locations[17][12].setScene(scenes[SceneType.road.ordinal()]);
         locations[17][13].setScene(scenes[SceneType.forest.ordinal()]);
         locations[17][14].setScene(scenes[SceneType.forest.ordinal()]);
-        locations[17][15].setScene(scenes[SceneType.cave.ordinal()]);
+        locations[17][15].setScene(scenes[SceneType.start.ordinal()]); // Starting position.
         locations[17][16].setScene(scenes[SceneType.forest.ordinal()]);
         locations[17][17].setScene(scenes[SceneType.road.ordinal()]);
         locations[17][18].setScene(scenes[SceneType.road.ordinal()]);

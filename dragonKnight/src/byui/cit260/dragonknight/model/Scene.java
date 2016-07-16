@@ -92,16 +92,17 @@ public class Scene implements Serializable{
         "Evil has decended upon the land, "
          +"heros are falling, "
          +"and hope is disapearing."
-         +"Will this evil preveal?");
+         +"Will this evil preveal?"
+        + "You have awaken in a cave with a fallen dragon" + "and have no memory of how you got there."
+        + "The only thing that you can remember is to collect two special stones to stop"
+        + "the Evil Dragon Lord from entering the kingdom.");
      startingScene.setMapSymbol(" ST ");
      startingScene.setBlocked(false);
      scenes[SceneType.start.ordinal()] = startingScene;
      
      Scene finishScene = new Scene();
      finishScene.setDescription(
-     "Congratulation! Well done you have emerge victorious against the Evil Dragon Lord."
-     +"You have just launced your ship of curious workmanship and "
-     +"begun your journey to home.");
+     "Congratulation! Well done you have emerge victorious against the Evil Dragon Lord.");
      finishScene.setMapSymbol(" FN ");
      finishScene.setBlocked(false);
      scenes[SceneType.finish.ordinal()] = finishScene;

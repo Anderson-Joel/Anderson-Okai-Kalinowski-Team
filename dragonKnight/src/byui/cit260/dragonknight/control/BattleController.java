@@ -123,4 +123,8 @@ public class BattleController {
             return false;
         }
     }
+
+    public static int random(int minAttackDamage, int maxAttackDamage) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -17,66 +17,53 @@ import byui.cit260.dragonknight.exception.LoseGameException;
 public class BattleController {
     
     
-    public static boolean meleeMonster(Player p, Monster m) throws LoseGameException {
+    public static boolean meleeMonster(Player p, Monster m) {
         
-        int playerInflictDamage = (int) (Player.MAX_DAMAGE * Math.random() / 2) + 1;
-        int monsterInflictDamage = (int) (Monster.MAX__MONSTER_DAMAGE * Math.random() / 2) + 1;
+        int playerInflictDamageMelee = (int) (Player.MAX_DAMAGE * Math.random() / 2) + 1;
+       // int monsterInflictDamage = (int) (Monster.MAX__MONSTER_DAMAGE * Math.random() / 2) + 1;
         
         
         
-        m.setHitPoint(m.getHitPoint() - playerInflictDamage);
-        p.setHitPoint(p.getHitPoint() - monsterInflictDamage);
-        
+        m.setHitPoint(m.getHitPoint() - playerInflictDamageMelee);
+
         // maybe write some confirmation text that in fact you have chosen to melee with the monster
-        System.out.println("You have " + p.getHitPoint() + " HP");
+        System.out.println("You have chosen to Melee with the monster");
+        System.out.println("Monster sustained " + playerInflictDamageMelee + " Damage.");
         System.out.println("Monster has " + m.getHitPoint() + " HP");
         
-        if(p.getHitPoint() > 0){
-            if(m.getHitPoint() <= 0) {
-                System.out.println("Monster Died");
-                return true;
-            } else {
-                return false;
-            }
+        if (m.getHitPoint() >= 0) {
+            return true;
+            // The Monster is still alive        
         } else {
-            System.out.println("You Died");
-            throw new LoseGameException();
-        }  
+            return false;
+            //you beat the monster
             
+        }
         
-        
-    //    if(m.getHitPoint() <= 0) {
-    //        return true;
-    //    } else {
-    //        return false;
-    //    }
-    
+
     }
     
-    public static boolean defendMonster(Player p, Monster m) throws LoseGameException {
+    public static boolean defendMonster(Player p, Monster m) {
         
-        int monsterInflictDamage = (int) (Monster.MAX__MONSTER_DAMAGE * Math.random() / 5) + 1;
-        int playerInflictDamage = (int) (Player.MAX_DAMAGE * Math.random() / 4) + 1;
+        //int monsterInflictDamage = (int) (Monster.MAX__MONSTER_DAMAGE * Math.random() / 5) + 1;
+        int playerInflictDamageLow = (int) (Player.MAX_DAMAGE * Math.random() / 4) + 1;
         
-        p.setHitPoint(p.getHitPoint() - monsterInflictDamage);
-        m.setHitPoint(m.getHitPoint() - playerInflictDamage);
+       // p.setHitPoint(p.getHitPoint() - monsterInflictDamage);
+        m.setHitPoint(m.getHitPoint() - playerInflictDamageLow);
         
-        System.out.println("You have " + p.getHitPoint() + " HP");
+        System.out.println("You have chosen to Melee with the monster");
+        System.out.println("Monster sustained " + playerInflictDamageLow + " Damage.");
         System.out.println("Monster has " + m.getHitPoint() + " HP");
         
         
-        if(p.getHitPoint() > 0){
-            if(m.getHitPoint() <= 0) {
-                System.out.println("Monster Died");
-                return true;
-            } else {
-                return false;
-            }
+        if (m.getHitPoint() >= 0) {
+            return true;
+            // The Monster is still alive        
         } else {
-            System.out.println("You Died");
-            throw new LoseGameException();
-        }          
-        
+            return false;
+            //you beat the monster
+            
+        }
         
         
         

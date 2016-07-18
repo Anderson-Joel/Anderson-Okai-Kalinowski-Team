@@ -2,6 +2,7 @@ package dragonknight;
 
 import byui.cit260.dragonknight.model.Game;
 import byui.cit260.dragonknight.model.Player;
+import byui.cit260.dragonknight.view.MainMenuView;
 import byui.cit260.dragonknight.view.StartProgramView;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -49,9 +50,10 @@ public class DragonKnight {
     }
     
     public static void main(String[] args) {
-        
-        try {
+
             
+        try {
+
             //open charcter stream files for end user input output
             DragonKnight.inFile = new BufferedReader(new InputStreamReader(System.in));
             DragonKnight.outFile = new PrintWriter(System.out, true);
@@ -63,6 +65,8 @@ public class DragonKnight {
             // create StartProgram View and start the program
             StartProgramView startProgramView = new StartProgramView();
             startProgramView.display();
+
+            
             return;
             
         } catch (Throwable e)  {
@@ -90,10 +94,11 @@ public class DragonKnight {
            
          }
         
-    StartProgramView startProgramView = new StartProgramView();
+  StartProgramView startProgramView = new StartProgramView();
 	
-    startProgramView.displayStartProgramView();
-        
+   startProgramView.displayStartProgramView();
+
+
     }
 
      public static Player getPlayer() {

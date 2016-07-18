@@ -25,7 +25,7 @@ public class StartProgramView {
     
     public StartProgramView() {
         this.promptMessage = "\nPlease enter your name: ";
-        this.getPlayersName();
+        PlayersName = this.getPlayersName(); //Add this so we could call this variable in displayNextView() - the variable there before was bogus.
         
         // display the banner when view is created
         this.displayBanner();
@@ -46,21 +46,26 @@ public class StartProgramView {
         + "\n***************************************************************"
         + "\n***************************************************************"
         );        
-        this.displayNextView(player);
+       this.displayNextView(player);
        
     }
+    
+    // SO Far I don't think we use this
     public void displayWelcomeMessage (String PlayerName) {
         System.out.println("==========================");
         System.out.println("Welcome" + PlayersName + ".");
         System.out.println("Enjoy the game");
         System.out.println("==========================");
     }
-
+    
+    
+    // So far I don't think we use this - we skip this by going straight to displayNextView()
     public void displayStartProgramView() {
         
         	boolean done = false; //set flag to not done
 	do {
             //promptfor and get players name
+            this.promptMessage = "\nPlease enter your name: "; //added this because without it, the game looks like it just froze. Expecting an entry without a prompt is a bad idea.
             String playersName = this.getPlayersName();
             if (playersName.toUpperCase().equals("Q")) // user wants to quite
                 return; // exit the game
@@ -95,7 +100,8 @@ try {
 } catch (Exception e) {
     System.out.println("Error reading input: " + e.getMessage());
 }
-	return value;  // return the value entered
+	
+        return value;  // return the value entered
    }
 
     private boolean doAction(String playersName) {
@@ -120,7 +126,7 @@ try {
 
     private void displayNextView(Player player) {
         System.out.println("\n====================================================="
-			+  "\n Welcome to the game " + player.getName()
+			+  "\n Welcome to the game " + PlayersName // changed from get.playerName(); because it didn't set anywhere
 			+  "\n We hope you have a lot of fun!"
 			+  "\n====================================================="
 			);
@@ -194,7 +200,7 @@ try {
 
     public void display() {
         
-        //System.out.println("YOU ARE AWESOME");
+        System.out.println("YOU ARE AWESOME");
         //StartProgramView startProgramView = new StartProgramView();
         
         // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

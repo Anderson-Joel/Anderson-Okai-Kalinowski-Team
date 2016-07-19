@@ -4,7 +4,6 @@ import byui.cit260.dragonknight.exception.MovementException;
 import byui.cit260.dragonknight.model.Game;
 import byui.cit260.dragonknight.model.Location;
 import byui.cit260.dragonknight.model.Map;
-import byui.cit260.dragonknight.model.Monster;
 import byui.cit260.dragonknight.model.Player;
 
 /**
@@ -46,9 +45,9 @@ public class MovementController {
         
         int currentCol = currentLocation.getCol();
         int currentRow = currentLocation.getRow();
-        int newRow = currentRow - 1;
+        int newCol = currentCol + 1;
         
-        Location newLocation = map.getLocation(newRow, currentCol);
+        Location newLocation = map.getLocation(currentRow, newCol);
         player.setLocation(newLocation);
         
         return true;
@@ -92,26 +91,5 @@ public class MovementController {
         
         return true;
     }
-        
-        public boolean checkForMonster(Game game) {
-        
-        Player player = game.getPlayer();
-        Location currentLocation = player.getLocation();
-        Monster[] monster = game.getMonster();
-        
-        Monster[] checkFigure = game.getMonster();
-        // if the monster is there then return true
-        //need to implement this
-    
-            
-
-        //   return true;
-        // }
-        // return false;
-        
-       
-       //This is only to clear errors, use the if statement above
-            return true;
-        }
     
 }

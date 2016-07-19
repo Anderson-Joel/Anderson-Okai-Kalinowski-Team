@@ -11,13 +11,13 @@ public class MapControl {
     
     public static Map createMap() {
         // create the map
-        Map map = new Map(25,25);
+        Map map = new Map();
         
         // create scenes
-        Scene[] scenes = createScenes();
+//        Scene[] scenes = createScenes();
         
         //assign a scene to a location
-        GameControl.assignScenesToLocations(map, scenes);
+//        GameControl.assignScenesToLocations(map, scenes);
         
         return map;
   

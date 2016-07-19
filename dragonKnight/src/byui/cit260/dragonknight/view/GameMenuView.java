@@ -77,7 +77,6 @@ class GameMenuView extends View {
         }
         return false;
     }
-    
 
     private void searchPeople() {
         System.out.println("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -89,7 +88,6 @@ class GameMenuView extends View {
             mc.moveNorth(DragonKnight.getGame());
             System.out.println("You moved north");
 
-            
         } catch (MovementException me) {
             System.out.println("You cannot move there");
         } catch (Exception e) {
@@ -107,6 +105,7 @@ class GameMenuView extends View {
         if (mc.moveEast(DragonKnight.getGame()) == false) {
             System.out.println("You cannot move towards that direction");
         }
+
         //CHECK THIS LOCATION - IF A MONSTER EXISTS AT THIS LOCATION GO TO BATTLE VIEW
         //This check should be done in the battle controller or movement controller.
         //Just a function that returns true if monster exists at location
@@ -118,7 +117,7 @@ class GameMenuView extends View {
         if (mc.moveSouth(DragonKnight.getGame()) == false) {
             System.out.println("You cannot move towards that direction");
         }
-        
+//        throw new LoseGameException();
         //CHECK THIS LOCATION - IF A MONSTER EXISTS AT THIS LOCATION GO TO BATTLE VIEW
         this.viewCheckMonster();
 
@@ -129,12 +128,12 @@ class GameMenuView extends View {
         if (mc.moveWest(DragonKnight.getGame()) == false) {
             System.out.println("You cannot move towards that direction");
         }
-       
+
         this.viewCheckMonster();
     }
 
     private void viewMap() {
-        System.out.println(DragonKnight.getGame().getMap());
+        System.out.println(DragonKnight.getGame().getMap().getMap());
     }
 
     private void viewCurrentLocation() {
@@ -155,23 +154,14 @@ class GameMenuView extends View {
         Location l = DragonKnight.getGame().getPlayer().getLocation();
         System.out.println("You are at (" + l.getRow() + ", " + l.getCol() + ")");
     }
-    
-    private void viewCheckMonster() {
-        
-        MovementController mc = new MovementController();
-        Game game = null;
 
-            //created by andrew
-            boolean monsterValue = mc.checkForMonster(game);
-           
-            //created by andrew
-            if (monsterValue == true) {
-                
-                //if monster present = true, create new battleview object
-                BattleView bv = new BattleView();
-                //display battleview object
-                bv.display();
-        
+    private void viewCheckMonster() {
+
+        if (DragonKnight.getPlayer().getLocation().getMonster() != null) {
+            BattleView bv = new BattleView();
+            bv.display();
         }
+
     }
+
 }

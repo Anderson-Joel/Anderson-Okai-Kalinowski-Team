@@ -1,6 +1,5 @@
 package byui.cit260.dragonknight.view;
 
-
 import byui.cit260.dragonknight.control.MovementController;
 import byui.cit260.dragonknight.control.BattleController;
 import byui.cit260.dragonknight.exception.LoseGameException;
@@ -12,47 +11,49 @@ import dragonknight.DragonKnight;
 import java.io.BufferedReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
  *
  * @author DragonmanJoel
  * @author Andrew_Kalinowski
  */
 public class BattleView extends View {
-    
-     public BattleView() {
-	super("\n"
-		  + "\n-----------------------------------------------"
-		  + "\n| Game Menu                                    "
-		  + "\n-----------------------------------------------"
-		  + "\nF - Fight - Medium Damage given & received     "
-		  + "\nD - Defend - Low Damage given & received       "
-		  + "\nM - Magic - High Damage given & received       "
-		  + "\nR - Run Away"
-		  + "\n-----------------------------------------------");
+
+    public BattleView() {
+        super("\n"
+                + "\n-----------------------------------------------"
+                + "\n| Game Menu                                    "
+                + "\n-----------------------------------------------"
+                + "\nF - Fight - Medium Damage given & received     "
+                + "\nD - Defend - Low Damage given & received       "
+                + "\nM - Magic - High Damage given & received       "
+                + "\nR - Run Away"
+                + "\n-----------------------------------------------");
     }
-    
+
      //TODO OVERRIDE VIEW'S public void display () function
      //ADD ADDITIONAL OUTPUT INFORMING THE USER WHICH MONSTER THEY'VE RUN INTO
      
     //@override
-    public void informOfMonster(String monster) {
+    public void informOfMonster() {
         
          //still need to figure this out.
          //Why am I not able to recall the monster name?
          
-         String monsterName = monster.getName();
-         Monster monsterHP = monster.getHitPoints();
-         //need to still figure out what the getHitPoint() actualy method is - I didn't name it right.
+        double monsterHp = DragonKnight.getPlayer().getLocation().getMonster().getHitPoint();
+        String monsterName = DragonKnight.getPlayer().getLocation().getMonster().getName();
+        double playerHP = DragonKnight.getPlayer().getHitPoint();
+        //need to still figure out what the getHitPoint() actualy method is - I didn't name it right.
          
-         System.out.println("You have run into " + monsterName + " He has: " + monsterHP + "HP"); 
-         
+         System.out.println("You have run into a monster named " + monsterName + "\nHe has: " + monsterHp + "HP"); 
+         System.out.println("\nYou currently have: " + playerHP + " HP");
      }
      
      
     @Override
     public boolean doAction(String value) {
         value = value.toUpperCase(); //convert to uppercase
-        
+
         switch (value) {
             case "F": //Fight
                 return this.fight();
@@ -64,7 +65,7 @@ public class BattleView extends View {
                 return true;
             case "R": //Run Away
                 this.runAway();
-                return true;    
+                return true;
             //case "I": //Use Item     -- I commented this out - andrew
             //    this.useItem();
             //    return true;
@@ -74,63 +75,81 @@ public class BattleView extends View {
         }
         return false;
     }
+    
+    @Override
+    public void display() {
+        String value;
+        boolean done = false;
+        informOfMonster();
+        
+        do {
+            //prompt for and get players name
+            this.console.println(this.displayMessage);
+            this.console.flush();
+            value = this.getInput();// useer wants to quit
+            // exit the view
+
+            //do the requested action and display the next view 
+            done = this.doAction(value);
+
+        } while (!done); //exit the view when done == true
+
+    }
 
     private boolean fight() {
-        
+
         System.out.println("*** Fight in battle  ***");
         //TODO Use BattleController to apply damage to monster and receive damage
-        BattleController battleController = new BattleController();
-         Monster Monster;
-        
-         
-         //need to make sure that I am calling the correct function.
-        battleController.meleeMonster(Monster);
-        
+
+        BattleController bc = new BattleController();
+        bc.meleeMonster(DragonKnight.getPlayer(), DragonKnight.getPlayer().getLocation().getMonster());
 
         //Throw loseGameException if your player dies.
         //If monster dies - inform player and end this view.
-        
-
         return true;
-        }
+    }
 
     private void defend() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("*** Defend in battle  ***");
+        //TODO Use BattleController to apply damage to monster and receive damage
+
+        BattleController bc = new BattleController();
+        bc.defendMonster(DragonKnight.getPlayer(), DragonKnight.getPlayer().getLocation().getMonster());    
     }
 
     private void magic() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    System.out.println("*** Use Magic in battle  ***");
+        //TODO Use BattleController to apply damage to monster and receive damage
+
+        BattleController bc = new BattleController();
+        bc.useMagic(DragonKnight.getPlayer(), DragonKnight.getPlayer().getLocation().getMonster());        
     }
 
     private void runAway() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BattleController bc = new BattleController();
+        bc.runAway(DragonKnight.getPlayer(), DragonKnight.getPlayer().getLocation().getMonster());
     }
-        
-    }
 
-
-
-//Original private classes before I added Above - Andrew
-
-
-/*
-    private boolean defend() {
-        //TODO Use BattleController to apply damage to monster and receive damage 
-        System.out.println("*** Defend in battle ***");
-    }
-    
-    private boolean magic() {
-        //TODO Use BattleController to apply damage to monster and receive damage
-        System.out.println("*** Use magic in battle  ***");
-    }
-    
-    //TODO maybe implement a run away option that has a chance to work.
-
-    private boolean useItem() {
-        //You could get rid of this I think
-        System.out.println("*** Use item in battle ***");
-    }
 }
 
-*/
+//Original private classes before I added Above - Andrew
+/*
+ private boolean defend() {
+ //TODO Use BattleController to apply damage to monster and receive damage 
+ System.out.println("*** Defend in battle ***");
+ }
+    
+ private boolean magic() {
+ //TODO Use BattleController to apply damage to monster and receive damage
+ System.out.println("*** Use magic in battle  ***");
+ }
+    
+ //TODO maybe implement a run away option that has a chance to work.
 
+ private boolean useItem() {
+ //You could get rid of this I think
+ System.out.println("*** Use item in battle ***");
+ }
+ }
+
+ */

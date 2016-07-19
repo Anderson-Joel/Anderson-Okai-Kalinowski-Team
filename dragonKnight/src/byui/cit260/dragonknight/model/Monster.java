@@ -269,9 +269,9 @@ public static Monster newBossInstance() {
         return true;
     }
     
-    public int attack() throws BattleControllerException {
-        return BattleController.random (minAttackDamage, maxAttackDamage);
-    }
+//    public int attack() throws BattleControllerException {
+//        return BattleController.random (minAttackDamage, maxAttackDamage);
+//    }
     public boolean isAlive() {
         return health > 0;
     }

@@ -8,6 +8,7 @@ import byui.cit260.dragonknight.model.Inventory;
 import byui.cit260.dragonknight.model.Item;
 import byui.cit260.dragonknight.model.Location;
 import byui.cit260.dragonknight.model.Map;
+import byui.cit260.dragonknight.model.Monster;
 import byui.cit260.dragonknight.model.NPC;
 import byui.cit260.dragonknight.model.Player;
 import byui.cit260.dragonknight.model.Scene;
@@ -18,6 +19,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.HashSet;
 
 /**
  *
@@ -54,14 +56,32 @@ public class GameControl {
         Map map = MapControl.createMap();
         game.setMap(map);
 
-        MapControl.moveNPCToStartingLocation(map);
+//        MapControl.moveNPCToStartingLocation(map);
 
-        player.setLocation(map.getLocation(17, 15)); //move player to starting position in the map
-
+        setupMonsters(map);
+        
+        player.setLocation(map.getLocation(0, 0)); //move player to starting position in the map
+        player.setHitPoint(20);
+        
         DragonKnight.setGame(game);
 
     }
 
+    private static void setupMonsters(Map map) {
+        
+        Monster wolf = new Monster();
+        wolf.setName("Wolf");
+        wolf.setHealth(10);
+        wolf.setMinAttackDamage(5);
+        wolf.setMaxAttackDamage(10);
+        wolf.setHitPoint(10);
+        
+        map.getLocation(0, 1).setMonster(wolf);
+        
+    }
+    
+
+    
     public static void saveGame(Game game, String filepath) 
         throws GameControlException {
         
@@ -86,7 +106,7 @@ public class GameControl {
         }
 
         // close the output file
-        DragonKnight.setCurrentGame(game); // save in DragonKnight
+        DragonKnight.setGame(game); // save in DragonKnight
     }
 
     private static int moveNPCToStartingLocation(Map map) {

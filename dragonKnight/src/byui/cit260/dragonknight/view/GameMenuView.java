@@ -55,14 +55,9 @@ class GameMenuView extends View {
             case "E":
                 moveEast();
                 break;
-            case "S": {
-                try {
-                    moveSouth();
-                } catch (LoseGameException e) {
-                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, e);
-                }
-            }
-            break;
+            case "S":
+                moveSouth();
+                break;
             case "W":
                 moveWest();
                 break;
@@ -107,17 +102,21 @@ class GameMenuView extends View {
         if (mc.moveEast(DragonKnight.getGame()) == false) {
             System.out.println("You cannot move towards that direction");
         }
+        if (DragonKnight.getPlayer().getLocation().getMonster() != null) {
+            BattleView bv = new BattleView();
+            bv.display();
+        }
         //CHECK THIS LOCATION - IF A MONSTER EXISTS AT THIS LOCATION GO TO BATTLE VIEW
         //This check should be done in the battle controller or movement controller.
         //Just a function that returns true if monster exists at location
     }
 
-    private void moveSouth() throws LoseGameException {
+    private void moveSouth() {
         MovementController mc = new MovementController();
         if (mc.moveSouth(DragonKnight.getGame()) == false) {
             System.out.println("You cannot move towards that direction");
         }
-        throw new LoseGameException();
+//        throw new LoseGameException();
         //CHECK THIS LOCATION - IF A MONSTER EXISTS AT THIS LOCATION GO TO BATTLE VIEW
 
     }
@@ -131,7 +130,7 @@ class GameMenuView extends View {
     }
 
     private void viewMap() {
-        System.out.println(DragonKnight.getGame().getMap());
+        System.out.println(DragonKnight.getGame().getMap().getMap());
     }
 
     private void viewCurrentLocation() {

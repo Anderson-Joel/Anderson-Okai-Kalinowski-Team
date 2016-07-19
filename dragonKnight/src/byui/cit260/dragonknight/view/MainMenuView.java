@@ -70,6 +70,7 @@ public class MainMenuView extends View {
             GameMenuView gameMenu = new GameMenuView();
             gameMenu.display();
         } catch (Exception lge) {
+            lge.printStackTrace();
             System.out.println("You lose");
         }
 

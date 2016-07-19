@@ -8,6 +8,7 @@ import byui.cit260.dragonknight.model.Inventory;
 import byui.cit260.dragonknight.model.Item;
 import byui.cit260.dragonknight.model.Location;
 import byui.cit260.dragonknight.model.Map;
+import byui.cit260.dragonknight.model.Monster;
 import byui.cit260.dragonknight.model.NPC;
 import byui.cit260.dragonknight.model.Player;
 import byui.cit260.dragonknight.model.Scene;
@@ -56,12 +57,27 @@ public class GameControl {
 
 //        MapControl.moveNPCToStartingLocation(map);
 
+        setupMonsters(map);
+        
         player.setLocation(map.getLocation(0, 0)); //move player to starting position in the map
 
         DragonKnight.setGame(game);
 
     }
 
+    private static void setupMonsters(Map map) {
+        
+        Monster wolf = new Monster();
+        wolf.setName("Wolf");
+        wolf.setHealth(10);
+        wolf.setMinAttackDamage(5);
+        wolf.setMaxAttackDamage(10);
+        
+        
+        map.getLocation(0, 1).setMonster(wolf);
+        
+    }
+    
     public static void saveGame(Game game, String filepath) 
         throws GameControlException {
         

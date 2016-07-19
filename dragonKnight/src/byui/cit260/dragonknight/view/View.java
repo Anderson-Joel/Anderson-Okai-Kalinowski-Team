@@ -1,4 +1,3 @@
-
 package byui.cit260.dragonknight.view;
 
 import dragonknight.DragonKnight;
@@ -9,67 +8,63 @@ import java.io.PrintWriter;
  *
  * @author gee
  */
-
 public abstract class View implements ViewInterface {
-    
+
     protected String displayMessage;
-    protected final PrintWriter console = DragonKnight.getOutFile;
+    protected final PrintWriter console = DragonKnight.getOutFile();
     protected final BufferedReader keyboard = DragonKnight.getInFile();
-    private boolean message;
-    
-    public View(){
-        
+
+    public View() {
+
     }
-    
+
     public View(String message) {
         this.displayMessage = message;
     }
+
     @Override
-    public void display (){
+    public void display() {
         String value;
         boolean done = false;
-        do{
+        do {
             //prompt for and get players name
-         this.console.println(this.message);
-        value = this.getInput();// useer wants to quit
-             // exit the view
-        
-        //do the requested action and display the next view 
-        done = this.doAction(value);
-        
+            this.console.println(this.displayMessage);
+            this.console.flush();
+            value = this.getInput();// useer wants to quit
+            // exit the view
+
+            //do the requested action and display the next view 
+            done = this.doAction(value);
+
         } while (!done); //exit the view when done == true
-        
+
     }
-    
+
     @Override
     public String getInput() {
-        
+
         boolean valid = false;
         String value = null;
         try {
-        //while a valid name has not been retrieved 
-        while (!valid) {
-            
-            
-            //get the value entered from the keyboard
-            value = this.keyboard.readLine();
-            value = value.trim();
-            
-            
-            
-            if (value.length() < 1) { //blank value entered
-                ErrorView.display(this.getClass().getName(),
-                        "You must enter a value.");
-                continue;
+            //while a valid name has not been retrieved 
+            while (!valid) {
+
+                //get the value entered from the keyboard
+                value = this.keyboard.readLine();
+                value = value.trim();
+
+                if (value.length() < 1) { //blank value entered
+                    ErrorView.display(this.getClass().getName(),
+                            "You must enter a value.");
+                    continue;
+                }
+                break;
             }
-            break;
-        }
-          } catch (Exception e) {
+        } catch (Exception e) {
             ErrorView.display(this.getClass().getName(),
                     "Error reading input: " + e.getMessage());
-        }    
-     return null; // return the name
         }
+        return value; // return the name
+    }
 
 }
-        

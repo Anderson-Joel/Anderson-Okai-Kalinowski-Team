@@ -1,4 +1,3 @@
-
 package byui.cit260.dragonknight.model;
 
 import java.io.Serializable;
@@ -9,14 +8,14 @@ import java.util.Objects;
  * @author gee
  */
 public class Inventory implements Serializable {
+
     private String itemName;
     private int itemAmount;
     private int itemInStock;
-    
-    
+    private String description;
+
     private Item[] item;
     private Weapon[] weapon;
-    private Game game;
 
     public Inventory() {
     }
@@ -37,6 +36,14 @@ public class Inventory implements Serializable {
         this.itemInStock = itemInStock;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
     public int getItemAmount() {
         return itemAmount;
     }
@@ -59,14 +66,6 @@ public class Inventory implements Serializable {
 
     public void setWeapon(Weapon[] weapon) {
         this.weapon = weapon;
-    }
-
-    public Game getGame() {
-        return game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
     }
 
     @Override
@@ -107,58 +106,31 @@ public class Inventory implements Serializable {
         return "Inventory{" + "itemName=" + itemName + ", itemAmount=" + itemAmount + ", itemInStock=" + itemInStock + '}';
     }
 
-    public Object getDescription() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public static Inventory[] createInventoryList() {
 
-    public Object getRequiredAmount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Object getQuantityInStock() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
-    public static Inventory[] createInventoryList(){
-        
         // created array(list) of inventory items
         Inventory[] inventory = new Inventory[14];
-        
+
         Inventory lumber = new Inventory();
         lumber.setDescription("Lumber");
-        lumber.setQuantityInStock(0);
-        lumber.setRequiredAmount(0);
+//        lumber.setQuantityInStock(0);
+//        lumber.setRequiredAmount(0);
         inventory[1] = lumber;
-        
+
         Inventory ore = new Inventory();
         ore.setDescription("Ore");
-        ore.setQuantityInStock(0);
-        ore.setRequiredAmount(0);
+//        ore.setQuantityInStock(0);
+//        ore.setRequiredAmount(0);
         inventory[1] = ore;
-        
+
         Inventory grain = new Inventory();
         grain.setDescription("Grain");
-        grain.setQuantityInStock(0);
-        grain.setRequiredAmount(0);
+//        grain.setQuantityInStock(0);
+//        grain.setRequiredAmount(0);
         inventory[2] = grain;
-        
+
         return inventory;
-        
-        
-    }
 
-    public void setDescription(String lumber) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    private void setQuantityInStock(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void setRequiredAmount(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 
 }

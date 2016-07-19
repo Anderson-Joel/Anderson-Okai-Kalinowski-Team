@@ -54,9 +54,9 @@ public class GameControl {
         Map map = MapControl.createMap();
         game.setMap(map);
 
-        MapControl.moveNPCToStartingLocation(map);
+//        MapControl.moveNPCToStartingLocation(map);
 
-        player.setLocation(map.getLocation(17, 15)); //move player to starting position in the map
+        player.setLocation(map.getLocation(0, 0)); //move player to starting position in the map
 
         DragonKnight.setGame(game);
 
@@ -86,7 +86,7 @@ public class GameControl {
         }
 
         // close the output file
-        DragonKnight.setCurrentGame(game); // save in DragonKnight
+        DragonKnight.setGame(game); // save in DragonKnight
     }
 
     private static int moveNPCToStartingLocation(Map map) {

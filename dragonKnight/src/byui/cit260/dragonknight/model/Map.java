@@ -13,57 +13,50 @@ import java.io.Serializable;
  * @author gee
  */
 public class Map implements Serializable {
-    
-    public static final int NUM_ROWS = 25;
-    public static final int NUM_COLS = 25;
-    
-    private Location[][] matrix;
-    
 
-    public Map(int noOfRows, int noOfColumns) {
-         matrix = new Location[NUM_ROWS][NUM_COLS];
+    public static final int NUM_ROWS = 10;
+    public static final int NUM_COLS = 10;
+
+    private Location[][] matrix;
+
+    public Map() {
+        matrix = new Location[NUM_ROWS][NUM_COLS];
         init();
-        
     }
 
-    
     public void init() {
-        
-      for (int row = 0; row < NUM_ROWS; row++){
-      for( int col = 0; col < NUM_COLS; col++){
+
+        for (int row = 0; row < NUM_ROWS; row++) {
+            for (int col = 0; col < NUM_COLS; col++) {
 //   create and initialize new Location object instance
                 Location loc = new Location();
-                
+
                 //Create a random location type
-      loc.setType(LocationType.values()[(int) (Math.random() * LocationType.values().length)]);
-       loc.setRow(row);
-       loc.setCol(col);
-               matrix[row][col] = loc;
+                loc.setType(LocationType.values()[(int) (Math.random() * LocationType.values().length)]);
+                loc.setRow(row);
+                loc.setCol(col);
+                matrix[row][col] = loc;
 
+            }
+        }
     }
-}
-    }
-    
+
     public String getMap() {
-        
-        String rtn ="";
-        for (int row = 0; row < NUM_ROWS; row++){
-      for( int col = 0; col < NUM_COLS; col++){
-          rtn += matrix[row][col].getType().name().charAt(0);
-          
-          if(matrix[row][col].getHero() !=null) {
-              rtn += matrix[row][col].getHero().getName().charAt(0);
-          }
-          rtn += "\t";
-      }
-      rtn += "\n";    
-    }
-        return rtn;
-}
 
-    //Location[][] getLocations() {
-    //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    //}
+        String rtn = "";
+        for (int row = 0; row < NUM_ROWS; row++) {
+            for (int col = 0; col < NUM_COLS; col++) {
+                rtn += matrix[row][col].getType().name().charAt(0);
+
+                if (matrix[row][col].getHero() != null) {
+                    rtn += matrix[row][col].getHero().getName().charAt(0);
+                }
+                rtn += "\t";
+            }
+            rtn += "\n";
+        }
+        return rtn;
+    }
 
     public Location getLocations(int row, int col) {
         return matrix[row][col];
@@ -74,9 +67,7 @@ public class Map implements Serializable {
     }
 
     public Location getLocation(int i, int i0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return matrix[i][i0];
     }
 
-    
-  
 }

@@ -67,7 +67,7 @@ public class GameControl {
 
     }
 
-    private static void setupMonsters(Map map) {
+    public static void setupMonsters(Map map) {
         
         Monster wolf = new Monster();
         wolf.setName("Wolf");
@@ -76,9 +76,10 @@ public class GameControl {
         wolf.setMaxAttackDamage(10);
         wolf.setHitPoint(10);
         
-        map.getLocation(0, 1).setMonster(wolf);
+        map.getLocation(2, 2).setMonster(wolf);
         
     }
+
     
 
     

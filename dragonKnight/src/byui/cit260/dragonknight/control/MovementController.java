@@ -84,9 +84,9 @@ public class MovementController {
         
         int currentCol = currentLocation.getCol();
         int currentRow = currentLocation.getRow();
-        int newRow = currentRow - 1;
+        int newCol = currentCol - 1;
         
-        Location newLocation = map.getLocation(newRow, currentCol);
+        Location newLocation = map.getLocation(currentRow, newCol);
         player.setLocation(newLocation);
         
         return true;

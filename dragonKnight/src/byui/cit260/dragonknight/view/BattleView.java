@@ -27,7 +27,8 @@ public class BattleView extends View {
                 + "\nF - Fight - Medium Damage given & received     "
                 + "\nD - Defend - Low Damage given & received       "
                 + "\nM - Magic - High Damage given & received       "
-                + "\nR - Run Away"
+                + "\nR - Run Away                                   "
+                + "\nW - Wave at the Beast you slayed               "
                 + "\n-----------------------------------------------");
     }
 
@@ -43,8 +44,7 @@ public class BattleView extends View {
         double monsterHp = DragonKnight.getPlayer().getLocation().getMonster().getHitPoint();
         String monsterName = DragonKnight.getPlayer().getLocation().getMonster().getName();
         double playerHP = DragonKnight.getPlayer().getHitPoint();
-        //need to still figure out what the getHitPoint() actualy method is - I didn't name it right.
-         
+      
          System.out.println("You have run into a monster named " + monsterName + "\nHe has: " + monsterHp + "HP"); 
          System.out.println("\nYou currently have: " + playerHP + " HP");
      }
@@ -66,6 +66,9 @@ public class BattleView extends View {
             case "R": //Run Away
                 this.runAway();
                 return true;
+            case "W": //Wave
+                this.wave();
+                return true;               
             //case "I": //Use Item     -- I commented this out - andrew
             //    this.useItem();
             //    return true;
@@ -128,6 +131,11 @@ public class BattleView extends View {
     private void runAway() {
         BattleController bc = new BattleController();
         bc.runAway(DragonKnight.getPlayer(), DragonKnight.getPlayer().getLocation().getMonster());
+    }
+
+    private void wave() {
+BattleController bc = new BattleController();
+        bc.wave(DragonKnight.getPlayer(), DragonKnight.getPlayer().getLocation().getMonster());        
     }
 
 }

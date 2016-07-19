@@ -122,7 +122,7 @@ public class Game implements Serializable {
     public Monster[] getMonster() {
         return monster;
     }
-
+    
     public void setMonster(Monster[] monster) {
         this.monster = monster;
     }

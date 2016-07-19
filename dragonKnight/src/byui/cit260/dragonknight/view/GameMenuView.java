@@ -8,6 +8,7 @@ package byui.cit260.dragonknight.view;
 import byui.cit260.dragonknight.control.MovementController;
 import byui.cit260.dragonknight.exception.LoseGameException;
 import byui.cit260.dragonknight.exception.MovementException;
+import byui.cit260.dragonknight.model.Game;
 import byui.cit260.dragonknight.model.Location;
 import dragonknight.DragonKnight;
 import java.io.BufferedReader;
@@ -55,14 +56,9 @@ class GameMenuView extends View {
             case "E":
                 moveEast();
                 break;
-            case "S": {
-                try {
-                    moveSouth();
-                } catch (LoseGameException e) {
-                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, e);
-                }
-            }
-            break;
+            case "S":
+                moveSouth();
+                break;
             case "W":
                 moveWest();
                 break;
@@ -81,6 +77,7 @@ class GameMenuView extends View {
         }
         return false;
     }
+    
 
     private void searchPeople() {
         System.out.println("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -91,6 +88,8 @@ class GameMenuView extends View {
         try {
             mc.moveNorth(DragonKnight.getGame());
             System.out.println("You moved north");
+
+            
         } catch (MovementException me) {
             System.out.println("You cannot move there");
         } catch (Exception e) {
@@ -99,6 +98,7 @@ class GameMenuView extends View {
             System.out.println("Finally executes");
         }
         //CHECK THIS LOCATION - IF A MONSTER EXISTS AT THIS LOCATION GO TO BATTLE VIEW
+        this.viewCheckMonster();
 
     }
 
@@ -110,15 +110,17 @@ class GameMenuView extends View {
         //CHECK THIS LOCATION - IF A MONSTER EXISTS AT THIS LOCATION GO TO BATTLE VIEW
         //This check should be done in the battle controller or movement controller.
         //Just a function that returns true if monster exists at location
+        this.viewCheckMonster();
     }
 
-    private void moveSouth() throws LoseGameException {
+    private void moveSouth() {
         MovementController mc = new MovementController();
         if (mc.moveSouth(DragonKnight.getGame()) == false) {
             System.out.println("You cannot move towards that direction");
         }
-        throw new LoseGameException();
+        
         //CHECK THIS LOCATION - IF A MONSTER EXISTS AT THIS LOCATION GO TO BATTLE VIEW
+        this.viewCheckMonster();
 
     }
 
@@ -127,7 +129,8 @@ class GameMenuView extends View {
         if (mc.moveWest(DragonKnight.getGame()) == false) {
             System.out.println("You cannot move towards that direction");
         }
-        //CHECK THIS LOCATION - IF A MONSTER EXISTS AT THIS LOCATION GO TO BATTLE VIEW
+       
+        this.viewCheckMonster();
     }
 
     private void viewMap() {
@@ -151,5 +154,24 @@ class GameMenuView extends View {
 
         Location l = DragonKnight.getGame().getPlayer().getLocation();
         System.out.println("You are at (" + l.getRow() + ", " + l.getCol() + ")");
+    }
+    
+    private void viewCheckMonster() {
+        
+        MovementController mc = new MovementController();
+        Game game = null;
+
+            //created by andrew
+            boolean monsterValue = mc.checkForMonster(game);
+           
+            //created by andrew
+            if (monsterValue == true) {
+                
+                //if monster present = true, create new battleview object
+                BattleView bv = new BattleView();
+                //display battleview object
+                bv.display();
+        
+        }
     }
 }

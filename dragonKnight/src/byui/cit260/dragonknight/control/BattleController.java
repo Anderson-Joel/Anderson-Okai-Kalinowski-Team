@@ -17,9 +17,9 @@ import byui.cit260.dragonknight.exception.LoseGameException;
 public class BattleController {
     
     
-    public static boolean meleeMonster(Player p, Monster m) {
+    public static boolean meleeMonster(Monster m) {
         
-        int playerInflictDamageMelee = (int) (Player.MAX_DAMAGE * Math.random() / 2) + 1;
+        int playerInflictDamageMelee = (int) (Monster.MAX__MONSTER_DAMAGE * Math.random() / 2) + 1;
        // int monsterInflictDamage = (int) (Monster.MAX__MONSTER_DAMAGE * Math.random() / 2) + 1;
         
         

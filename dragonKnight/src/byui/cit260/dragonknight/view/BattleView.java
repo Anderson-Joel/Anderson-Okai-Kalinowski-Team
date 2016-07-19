@@ -34,6 +34,21 @@ public class BattleView extends View {
      //TODO OVERRIDE VIEW'S public void display () function
      //ADD ADDITIONAL OUTPUT INFORMING THE USER WHICH MONSTER THEY'VE RUN INTO
      
+    //@override
+    public void informOfMonster(String monster) {
+        
+         //still need to figure this out.
+         //Why am I not able to recall the monster name?
+         
+         String monsterName = monster.getName();
+         Monster monsterHP = monster.getHitPoints();
+         //need to still figure out what the getHitPoint() actualy method is - I didn't name it right.
+         
+         System.out.println("You have run into " + monsterName + " He has: " + monsterHP + "HP"); 
+         
+     }
+     
+     
     @Override
     public boolean doAction(String value) {
         value = value.toUpperCase(); //convert to uppercase
@@ -64,6 +79,12 @@ public class BattleView extends View {
         
         System.out.println("*** Fight in battle  ***");
         //TODO Use BattleController to apply damage to monster and receive damage
+        BattleController battleController = new BattleController();
+         Monster Monster;
+        
+         
+         //need to make sure that I am calling the correct function.
+        battleController.meleeMonster(Monster);
         
 
         //Throw loseGameException if your player dies.
